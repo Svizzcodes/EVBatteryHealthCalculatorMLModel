@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-darkest: #050607;
+    --bg-dark: #090a0d;
+    --bg-card: #0d0f13;
+    --border-subtle: #14181f;
+    --border-main: #1b2028;
+    --border-bright: #2c3440;
+    --accent-cyan: #00f0ff;
+    --accent-cyan-dim: rgba(0, 240, 255, 0.12);
+  }
+
+  body {
+    background-color: var(--bg-darkest);
+    color: #cbd5e1;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050607;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1b2028;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2c3440;
+}
+
+/* Subtle Technical Grid */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(27, 32, 40, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(27, 32, 40, 0.4) 1px, transparent 1px);
+}
+
+.bg-tech-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Glass & Border Utilities */
+.tech-border {
+  border: 1px solid #1b2028;
+}
+
+.tech-border-cyan {
+  border: 1px solid rgba(0, 240, 255, 0.25);
+}
+
+.tech-card {
+  background: rgba(13, 15, 19, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(27, 32, 40, 0.8);
+}
+
+.tech-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-card-hover:hover {
+  border-color: rgba(0, 240, 255, 0.35);
+  background: rgba(19, 23, 29, 0.85);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.04);
+}
+
+/* Laser Glow and Light Trail effects */
+.glow-cyan {
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 16px rgba(0, 240, 255, 0.5);
+}
+
+.text-glow-white {
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.4);
+}
+
+/* Pulse animation for telemetry */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Light line travel animation */
+@keyframes light-travel {
+  0% { transform: translateX(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+.animate-light-travel {
+  animation: light-travel 4s ease-in-out infinite;
+}

@@ -1,0 +1,3628 @@
+{
+  "metadata": {
+    "project_title": "Explainable Machine Learning Approaches for State of Health Estimation of Lithium-Ion Batteries",
+    "student": {
+      "name": "SHLOK VIJ",
+      "prn": "230705211143",
+      "semester": "Semester VII",
+      "section": "Section B",
+      "subject": "Data Science Group A",
+      "institution": "Symbiosis Institute of Technology, Nagpur"
+    },
+    "timestamp": "2026-09-25 11:54:52 UTC",
+    "status": "COMPLETED_EXPERIMENT"
+  },
+  "dataset": {
+    "name": "NASA Randomized Battery Usage Data Set",
+    "source": "NASA Ames Prognostics Center of Excellence (PCoE) / AWS S3",
+    "dataset_number": 11,
+    "observations": 315,
+    "batteries_count": 12,
+    "batteries": [
+      "RW1",
+      "RW10",
+      "RW11",
+      "RW12",
+      "RW2",
+      "RW3",
+      "RW4",
+      "RW5",
+      "RW6",
+      "RW7",
+      "RW8",
+      "RW9"
+    ],
+    "features_count": 23,
+    "raw_files_count": 28
+  },
+  "models": [
+    {
+      "name": "Gradient Boosting",
+      "mae": 2.065827694859913,
+      "rmse": 3.100043177246732,
+      "r2": 0.9594519175461034
+    },
+    {
+      "name": "Extra Trees",
+      "mae": 2.0090770352481417,
+      "rmse": 3.112178064847963,
+      "r2": 0.9591338513551948
+    },
+    {
+      "name": "Random Forest",
+      "mae": 2.317401655169457,
+      "rmse": 3.588702932531143,
+      "r2": 0.9456612236087996
+    },
+    {
+      "name": "Ridge",
+      "mae": 2.840791784838496,
+      "rmse": 4.008145996348182,
+      "r2": 0.9322168261638751
+    },
+    {
+      "name": "Linear Regression",
+      "mae": 3.024625339217876,
+      "rmse": 4.064931336369327,
+      "r2": 0.9302825869719655
+    },
+    {
+      "name": "Elastic Net",
+      "mae": 3.580050891875737,
+      "rmse": 4.9965014330799296,
+      "r2": 0.8946664143630819
+    }
+  ],
+  "selected_model": {
+    "name": "Gradient Boosting",
+    "mae": 2.065827694859913,
+    "rmse": 3.100043177246732,
+    "r2": 0.9594519175461034
+  },
+  "baseline": {
+    "name": "Mean-SoH Training Baseline",
+    "mae": 13.329747607933252,
+    "rmse": 16.112907121646295,
+    "r2": -0.09542498674810362
+  },
+  "improvement": {
+    "mae_percent": 84.50212445410124,
+    "rmse_percent": 80.76049744566521
+  },
+  "batterywise": {
+    "unseen_batteries": [
+      "RW1",
+      "RW7",
+      "RW8"
+    ],
+    "models": [
+      {
+        "name": "Linear Regression",
+        "mae": 10.426559223672937,
+        "rmse": 11.123473705163605,
+        "r2": 0.11129851308688521
+      },
+      {
+        "name": "Ridge",
+        "mae": 4.614027274276944,
+        "rmse": 5.2437406826361395,
+        "r2": 0.80250438620939
+      },
+      {
+        "name": "Elastic Net",
+        "mae": 4.47917461551041,
+        "rmse": 5.015837994944835,
+        "r2": 0.819298381032563
+      },
+      {
+        "name": "Random Forest",
+        "mae": 2.8124757411517076,
+        "rmse": 3.5173119137741486,
+        "r2": 0.9111419439515039
+      },
+      {
+        "name": "Extra Trees",
+        "mae": 2.005406772173953,
+        "rmse": 2.7651937697519715,
+        "r2": 0.945080549759141
+      },
+      {
+        "name": "Gradient Boosting",
+        "mae": 2.481870977913227,
+        "rmse": 3.0977091944332558,
+        "r2": 0.9310782444074013
+      }
+    ],
+    "selected_model": {
+      "name": "Gradient Boosting",
+      "mae": 2.481870977913227,
+      "rmse": 3.0977091944332558,
+      "r2": 0.9310782444074013
+    }
+  },
+  "degradation": {
+    "mean_slope": -1.7565725660162377,
+    "median_slope": -1.6146788403839012,
+    "unit": "% SoH per reference cycle index"
+  },
+  "top_features": [
+    {
+      "feature": "cycle_index",
+      "importance": 16.4026866101807
+    },
+    {
+      "feature": "rw_duration_s",
+      "importance": 1.3089948390926238
+    },
+    {
+      "feature": "temperature_std",
+      "importance": 0.7082311051968097
+    },
+    {
+      "feature": "temperature_min",
+      "importance": 0.6162922432049058
+    },
+    {
+      "feature": "current_mean",
+      "importance": 0.46942242710016896
+    },
+    {
+      "feature": "temperature_range",
+      "importance": 0.37946729679131513
+    },
+    {
+      "feature": "voltage_std",
+      "importance": 0.34571560224037956
+    },
+    {
+      "feature": "temperature_mean",
+      "importance": 0.31092766818218853
+    },
+    {
+      "feature": "voltage_mean",
+      "importance": 0.23647184903413548
+    },
+    {
+      "feature": "voltage_min",
+      "importance": 0.23119416643160556
+    },
+    {
+      "feature": "current_max",
+      "importance": 0.23033484100039212
+    },
+    {
+      "feature": "abs_current_mean",
+      "importance": 0.13755853320151246
+    },
+    {
+      "feature": "current_min",
+      "importance": 0.1347357963205994
+    },
+    {
+      "feature": "current_range",
+      "importance": 0.13259578355257434
+    },
+    {
+      "feature": "temperature_max",
+      "importance": 0.10088575654171938
+    }
+  ],
+  "shap_features": [
+    {
+      "feature": "cycle_index",
+      "mean_abs_shap": 11.091294012908897
+    },
+    {
+      "feature": "rw_duration_s",
+      "mean_abs_shap": 0.9783567459833176
+    },
+    {
+      "feature": "temperature_std",
+      "mean_abs_shap": 0.7428230217176667
+    },
+    {
+      "feature": "temperature_min",
+      "mean_abs_shap": 0.6842022242969794
+    },
+    {
+      "feature": "temperature_range",
+      "mean_abs_shap": 0.6732515217046837
+    },
+    {
+      "feature": "temperature_mean",
+      "mean_abs_shap": 0.49842990734184267
+    },
+    {
+      "feature": "current_mean",
+      "mean_abs_shap": 0.46649507653560857
+    },
+    {
+      "feature": "voltage_mean",
+      "mean_abs_shap": 0.3480323017134269
+    },
+    {
+      "feature": "current_max",
+      "mean_abs_shap": 0.34294282127655584
+    },
+    {
+      "feature": "abs_current_mean",
+      "mean_abs_shap": 0.3331870280163689
+    },
+    {
+      "feature": "voltage_min",
+      "mean_abs_shap": 0.3076481033509422
+    },
+    {
+      "feature": "voltage_std",
+      "mean_abs_shap": 0.2228449873488291
+    },
+    {
+      "feature": "rw_samples",
+      "mean_abs_shap": 0.21852431399880562
+    },
+    {
+      "feature": "current_std",
+      "mean_abs_shap": 0.1833541469613613
+    },
+    {
+      "feature": "charge_throughput_ah",
+      "mean_abs_shap": 0.17362842817460217
+    }
+  ],
+  "feature_screening": [
+    {
+      "feature": "cycle_index",
+      "pearson_abs": 0.9279542136028761,
+      "f_score": 1940.4038689370586,
+      "mutual_info": 1.3798242720207643,
+      "composite_score": 1.0
+    },
+    {
+      "feature": "discharge_throughput_ah",
+      "pearson_abs": 0.7338216906461851,
+      "f_score": 365.2147699101887,
+      "mutual_info": 0.9552168108817383,
+      "composite_score": 0.552832398595422
+    },
+    {
+      "feature": "charge_throughput_ah",
+      "pearson_abs": 0.7241597847819812,
+      "f_score": 345.1262954521585,
+      "mutual_info": 0.9521786178497988,
+      "composite_score": 0.5450800325152559
+    },
+    {
+      "feature": "abs_current_mean",
+      "pearson_abs": 0.6523272669466965,
+      "f_score": 231.85085438130753,
+      "mutual_info": 0.6983295994780763,
+      "composite_score": 0.4363087494776304
+    },
+    {
+      "feature": "current_std",
+      "pearson_abs": 0.4265662510430001,
+      "f_score": 69.62129975023028,
+      "mutual_info": 0.7927987386504984,
+      "composite_score": 0.3489551456861288
+    },
+    {
+      "feature": "rw_duration_s",
+      "pearson_abs": 0.3984895624033661,
+      "f_score": 59.08480973067752,
+      "mutual_info": 0.7368394946199559,
+      "composite_score": 0.3229616754128734
+    },
+    {
+      "feature": "rw_samples",
+      "pearson_abs": 0.24516335096579753,
+      "f_score": 20.015946317197557,
+      "mutual_info": 0.9193009949656461,
+      "composite_score": 0.30518055486964585
+    },
+    {
+      "feature": "current_mean",
+      "pearson_abs": 0.5039131057598768,
+      "f_score": 106.53078982933845,
+      "mutual_info": 0.3917800305598287,
+      "composite_score": 0.284280929122042
+    },
+    {
+      "feature": "voltage_min",
+      "pearson_abs": 0.4019879674087379,
+      "f_score": 60.327626093965094,
+      "mutual_info": 0.3506955474529634,
+      "composite_score": 0.2287292835445263
+    },
+    {
+      "feature": "voltage_range",
+      "pearson_abs": 0.41542940132439843,
+      "f_score": 65.28503120750875,
+      "mutual_info": 0.27924141919959355,
+      "composite_score": 0.21680238029505552
+    },
+    {
+      "feature": "voltage_max",
+      "pearson_abs": 0.40870880537749743,
+      "f_score": 62.769646885604786,
+      "mutual_info": 0.25434565895363237,
+      "composite_score": 0.20773031390643346
+    },
+    {
+      "feature": "rw_steps",
+      "pearson_abs": 0.3028316751875978,
+      "f_score": 31.6024664916483,
+      "mutual_info": 0.42470126308113443,
+      "composite_score": 0.20572957004297485
+    },
+    {
+      "feature": "current_min",
+      "pearson_abs": 0.37827223328141996,
+      "f_score": 52.2658471378914,
+      "mutual_info": 0.1183340760581375,
+      "composite_score": 0.16102975635708372
+    },
+    {
+      "feature": "current_range",
+      "pearson_abs": 0.374836161953106,
+      "f_score": 51.166122560672235,
+      "mutual_info": 0.10973134992280542,
+      "composite_score": 0.1574463046049129
+    },
+    {
+      "feature": "current_max",
+      "pearson_abs": 0.3540631392454611,
+      "f_score": 44.86180926468268,
+      "mutual_info": 0.10543653493673633,
+      "composite_score": 0.1476702874318412
+    },
+    {
+      "feature": "voltage_mean",
+      "pearson_abs": 0.22998468882211834,
+      "f_score": 17.480068059820475,
+      "mutual_info": 0.24697602549743625,
+      "composite_score": 0.13249210889725757
+    },
+    {
+      "feature": "voltage_std",
+      "pearson_abs": 0.128068966507687,
+      "f_score": 5.219325235975792,
+      "mutual_info": 0.40601235458747187,
+      "composite_score": 0.1323879196768181
+    },
+    {
+      "feature": "temperature_std",
+      "pearson_abs": 0.1376699531485118,
+      "f_score": 6.046901019750144,
+      "mutual_info": 0.09728094557212841,
+      "composite_score": 0.059516832912640816
+    },
+    {
+      "feature": "temperature_range",
+      "pearson_abs": 0.08947287810685978,
+      "f_score": 2.525909830175436,
+      "mutual_info": 0.06012844049547961,
+      "composite_score": 0.032002510823391846
+    },
+    {
+      "feature": "temperature_mean",
+      "pearson_abs": 0.040036059337289806,
+      "f_score": 0.5025087971316171,
+      "mutual_info": 0.07249859969422134,
+      "composite_score": 0.01656758793677596
+    },
+    {
+      "feature": "temperature_min",
+      "pearson_abs": 0.05786546051889286,
+      "f_score": 1.0515739082826436,
+      "mutual_info": 0.03527322513955444,
+      "composite_score": 0.013980477421201789
+    },
+    {
+      "feature": "temperature_max",
+      "pearson_abs": 0.020226075890895204,
+      "f_score": 0.12809887217925975,
+      "mutual_info": 0.05666668721180779,
+      "composite_score": 0.005303743610646626
+    }
+  ],
+  "outliers": [
+    {
+      "feature": "rw_steps",
+      "outlier_count": 0,
+      "lower_bound": -2932.5,
+      "upper_bound": 6559.5
+    },
+    {
+      "feature": "rw_samples",
+      "outlier_count": 7,
+      "lower_bound": -27540.5,
+      "upper_bound": 325707.5
+    },
+    {
+      "feature": "rw_duration_s",
+      "outlier_count": 0,
+      "lower_bound": -255712.3249999999,
+      "upper_bound": 936117.8749999998
+    },
+    {
+      "feature": "charge_throughput_ah",
+      "outlier_count": 6,
+      "lower_bound": -16.74894696006944,
+      "upper_bound": 99.67021037604168
+    },
+    {
+      "feature": "discharge_throughput_ah",
+      "outlier_count": 6,
+      "lower_bound": -16.108395037847206,
+      "upper_bound": 98.09373898715273
+    },
+    {
+      "feature": "abs_current_mean",
+      "outlier_count": 0,
+      "lower_bound": 0.641390566904636,
+      "upper_bound": 2.3487039335685753
+    },
+    {
+      "feature": "current_mean",
+      "outlier_count": 0,
+      "lower_bound": -1.7509083627703015,
+      "upper_bound": 2.982786506645949
+    },
+    {
+      "feature": "current_std",
+      "outlier_count": 24,
+      "lower_bound": 0.9551656742078262,
+      "upper_bound": 2.1245372009068757
+    },
+    {
+      "feature": "current_min",
+      "outlier_count": 0,
+      "lower_bound": -8.511500000000002,
+      "upper_bound": 1.8925000000000005
+    },
+    {
+      "feature": "current_max",
+      "outlier_count": 0,
+      "lower_bound": 3.30875,
+      "upper_bound": 5.390750000000001
+    },
+    {
+      "feature": "current_range",
+      "outlier_count": 0,
+      "lower_bound": 1.4199999999999982,
+      "upper_bound": 13.900000000000002
+    },
+    {
+      "feature": "voltage_mean",
+      "outlier_count": 30,
+      "lower_bound": 3.6625834048938404,
+      "upper_bound": 3.8507596452564026
+    },
+    {
+      "feature": "voltage_std",
+      "outlier_count": 0,
+      "lower_bound": 0.2649725615156312,
+      "upper_bound": 0.36857120453702896
+    },
+    {
+      "feature": "voltage_min",
+      "outlier_count": 0,
+      "lower_bound": 2.4370000000000003,
+      "upper_bound": 3.6369999999999996
+    },
+    {
+      "feature": "voltage_max",
+      "outlier_count": 0,
+      "lower_bound": 3.7870000000000004,
+      "upper_bound": 4.898999999999999
+    }
+  ],
+  "trajectories": [
+    {
+      "battery_id": "RW1",
+      "profile_group": "Group_1_4",
+      "cycles_count": 23,
+      "initial_capacity_ah": 1.9584665125,
+      "final_soh": 59.175621070121416,
+      "slope": -1.5862389056872346,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 1.9584665125,
+          "duration_s": 366900.25,
+          "temp_mean": 26.383465704346456
+        },
+        {
+          "cycle_index": 2,
+          "soh": 97.58655498073013,
+          "capacity_ah": 1.9112000000000002,
+          "duration_s": 342062.61,
+          "temp_mean": 25.90132797081502
+        },
+        {
+          "cycle_index": 3,
+          "soh": 95.4764006123558,
+          "capacity_ah": 1.8698733333333333,
+          "duration_s": 323270.22,
+          "temp_mean": 25.373272597268112
+        },
+        {
+          "cycle_index": 4,
+          "soh": 93.26635232818555,
+          "capacity_ah": 1.826590277777778,
+          "duration_s": 409433.1599999999,
+          "temp_mean": 25.033862652152905
+        },
+        {
+          "cycle_index": 5,
+          "soh": 91.31875428083035,
+          "capacity_ah": 1.7884472222222225,
+          "duration_s": 370490.08999999997,
+          "temp_mean": 24.771704088166906
+        },
+        {
+          "cycle_index": 6,
+          "soh": 89.15379512889282,
+          "capacity_ah": 1.7460472222222223,
+          "duration_s": 412359.82999999996,
+          "temp_mean": 30.074357065110206
+        },
+        {
+          "cycle_index": 7,
+          "soh": 87.52652990678992,
+          "capacity_ah": 1.714177777777778,
+          "duration_s": 360771.74,
+          "temp_mean": 30.7152970641598
+        },
+        {
+          "cycle_index": 8,
+          "soh": 86.03663122940995,
+          "capacity_ah": 1.684998611111111,
+          "duration_s": 355260.74,
+          "temp_mean": 29.731781925473193
+        },
+        {
+          "cycle_index": 9,
+          "soh": 83.95755276186043,
+          "capacity_ah": 1.6442805555555555,
+          "duration_s": 369220.14999999997,
+          "temp_mean": 29.10501365053861
+        },
+        {
+          "cycle_index": 10,
+          "soh": 82.63133089667494,
+          "capacity_ah": 1.6183069444444447,
+          "duration_s": 374177.63999999996,
+          "temp_mean": 28.91736888530822
+        },
+        {
+          "cycle_index": 11,
+          "soh": 81.51516566828317,
+          "capacity_ah": 1.5964472222222226,
+          "duration_s": 345797.6699999999,
+          "temp_mean": 29.14244022616986
+        },
+        {
+          "cycle_index": 12,
+          "soh": 82.72125385935368,
+          "capacity_ah": 1.6200680555555556,
+          "duration_s": 160237.52999999997,
+          "temp_mean": 29.4507328113879
+        },
+        {
+          "cycle_index": 13,
+          "soh": 80.24397552158244,
+          "capacity_ah": 1.5715513888888892,
+          "duration_s": 529144.9099999999,
+          "temp_mean": 28.760259165727838
+        },
+        {
+          "cycle_index": 14,
+          "soh": 78.43480777639513,
+          "capacity_ah": 1.5361194444444446,
+          "duration_s": 524728.3399999999,
+          "temp_mean": 27.62724584445323
+        },
+        {
+          "cycle_index": 15,
+          "soh": 77.1772337249896,
+          "capacity_ah": 1.5114902777777777,
+          "duration_s": 550166.3599999999,
+          "temp_mean": 27.545311847934677
+        },
+        {
+          "cycle_index": 16,
+          "soh": 74.31586803243279,
+          "capacity_ah": 1.455451388888889,
+          "duration_s": 544120.5899999999,
+          "temp_mean": 26.970779431489618
+        },
+        {
+          "cycle_index": 17,
+          "soh": 74.03787275348904,
+          "capacity_ah": 1.4500069444444446,
+          "duration_s": 475977.17,
+          "temp_mean": 25.74410662526292
+        },
+        {
+          "cycle_index": 18,
+          "soh": 70.52733135086818,
+          "capacity_ah": 1.3812541666666671,
+          "duration_s": 460380.88,
+          "temp_mean": 25.939599862677056
+        },
+        {
+          "cycle_index": 19,
+          "soh": 69.14004980834325,
+          "capacity_ah": 1.3540847222222228,
+          "duration_s": 532190.76,
+          "temp_mean": 26.795323452182995
+        },
+        {
+          "cycle_index": 20,
+          "soh": 67.9885678327795,
+          "capacity_ah": 1.3315333333333335,
+          "duration_s": 505761.85,
+          "temp_mean": 30.53280764357866
+        },
+        {
+          "cycle_index": 21,
+          "soh": 72.33507685235158,
+          "capacity_ah": 1.4166582569444446,
+          "duration_s": 191608.37999999998,
+          "temp_mean": 30.006896113492324
+        },
+        {
+          "cycle_index": 22,
+          "soh": 64.1495381311618,
+          "capacity_ah": 1.2563472222222223,
+          "duration_s": 513551.32999999996,
+          "temp_mean": 32.42014255983636
+        },
+        {
+          "cycle_index": 23,
+          "soh": 59.175621070121416,
+          "capacity_ah": 1.1589347222222222,
+          "duration_s": 452863.74,
+          "temp_mean": 29.100925262255686
+        }
+      ]
+    },
+    {
+      "battery_id": "RW10",
+      "profile_group": "Group_9_12",
+      "cycles_count": 38,
+      "initial_capacity_ah": 2.051825,
+      "final_soh": 41.03866882734477,
+      "slope": -1.3060563205762887,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 2.051825,
+          "duration_s": 348302.2,
+          "temp_mean": 28.52964514046587
+        },
+        {
+          "cycle_index": 2,
+          "soh": 96.42391529492038,
+          "capacity_ah": 1.97845,
+          "duration_s": 331062.29999999993,
+          "temp_mean": 28.607965848230954
+        },
+        {
+          "cycle_index": 3,
+          "soh": 93.22330933031165,
+          "capacity_ah": 1.912779166666667,
+          "duration_s": 316197.23,
+          "temp_mean": 28.3092057632976
+        },
+        {
+          "cycle_index": 4,
+          "soh": 90.98011661704959,
+          "capacity_ah": 1.866752777777778,
+          "duration_s": 307018.96,
+          "temp_mean": 28.7633083191039
+        },
+        {
+          "cycle_index": 5,
+          "soh": 85.67758783846901,
+          "capacity_ah": 1.7579541666666667,
+          "duration_s": 288861.08999999997,
+          "temp_mean": 28.067181135497975
+        },
+        {
+          "cycle_index": 6,
+          "soh": 83.2398580125823,
+          "capacity_ah": 1.707936216666667,
+          "duration_s": 284458.85,
+          "temp_mean": 34.303600251835874
+        },
+        {
+          "cycle_index": 7,
+          "soh": 80.73025673621181,
+          "capacity_ah": 1.656443590277778,
+          "duration_s": 262578.05000000005,
+          "temp_mean": 34.52733021116212
+        },
+        {
+          "cycle_index": 8,
+          "soh": 77.91085713666833,
+          "capacity_ah": 1.5985944444444447,
+          "duration_s": 263541.55000000005,
+          "temp_mean": 35.13319621578672
+        },
+        {
+          "cycle_index": 9,
+          "soh": 74.57974404899703,
+          "capacity_ah": 1.5302458333333333,
+          "duration_s": 244680.43,
+          "temp_mean": 34.20572970683999
+        },
+        {
+          "cycle_index": 10,
+          "soh": 71.89988045872441,
+          "capacity_ah": 1.4752597222222221,
+          "duration_s": 223376.57,
+          "temp_mean": 33.98824257903516
+        },
+        {
+          "cycle_index": 11,
+          "soh": 70.05667041671575,
+          "capacity_ah": 1.437440277777778,
+          "duration_s": 237526.78999999998,
+          "temp_mean": 34.20407147622698
+        },
+        {
+          "cycle_index": 12,
+          "soh": 68.50913211409356,
+          "capacity_ah": 1.4056875000000002,
+          "duration_s": 217278.33,
+          "temp_mean": 34.26528474159295
+        },
+        {
+          "cycle_index": 13,
+          "soh": 73.19899493269543,
+          "capacity_ah": 1.501915277777778,
+          "duration_s": 73929.68,
+          "temp_mean": 33.982785756191134
+        },
+        {
+          "cycle_index": 14,
+          "soh": 67.65421643604543,
+          "capacity_ah": 1.3881461263888892,
+          "duration_s": 228551.99,
+          "temp_mean": 34.27945902689026
+        },
+        {
+          "cycle_index": 15,
+          "soh": 66.0510223283608,
+          "capacity_ah": 1.355251388888889,
+          "duration_s": 209784.32,
+          "temp_mean": 34.30911410284387
+        },
+        {
+          "cycle_index": 16,
+          "soh": 64.3578142493742,
+          "capacity_ah": 1.3205097222222222,
+          "duration_s": 210434.38,
+          "temp_mean": 33.73175911222523
+        },
+        {
+          "cycle_index": 17,
+          "soh": 63.42205962984174,
+          "capacity_ah": 1.3013096750000002,
+          "duration_s": 211170.47999999998,
+          "temp_mean": 33.94249410876583
+        },
+        {
+          "cycle_index": 18,
+          "soh": 62.39513062219678,
+          "capacity_ah": 1.2802388888888891,
+          "duration_s": 196908.97999999998,
+          "temp_mean": 33.63607410131981
+        },
+        {
+          "cycle_index": 19,
+          "soh": 62.3040193215525,
+          "capacity_ah": 1.2783694444444447,
+          "duration_s": 194510.84999999998,
+          "temp_mean": 33.49771333094647
+        },
+        {
+          "cycle_index": 20,
+          "soh": 61.747072592556506,
+          "capacity_ah": 1.2669418722222225,
+          "duration_s": 182958.09,
+          "temp_mean": 33.16401382285855
+        },
+        {
+          "cycle_index": 21,
+          "soh": 61.072595264107704,
+          "capacity_ah": 1.253102777777778,
+          "duration_s": 186492.38999999998,
+          "temp_mean": 33.217992706740446
+        },
+        {
+          "cycle_index": 22,
+          "soh": 59.98996597879666,
+          "capacity_ah": 1.2308891194444447,
+          "duration_s": 191260.53,
+          "temp_mean": 32.42899004802444
+        },
+        {
+          "cycle_index": 23,
+          "soh": 59.32130880774162,
+          "capacity_ah": 1.2171694444444445,
+          "duration_s": 195462.86000000002,
+          "temp_mean": 32.18180153519975
+        },
+        {
+          "cycle_index": 24,
+          "soh": 58.1495200072564,
+          "capacity_ah": 1.1931263888888886,
+          "duration_s": 175634.43,
+          "temp_mean": 32.606725466817466
+        },
+        {
+          "cycle_index": 25,
+          "soh": 56.77587838469005,
+          "capacity_ah": 1.1649416666666668,
+          "duration_s": 173684.78000000003,
+          "temp_mean": 31.952091324533534
+        },
+        {
+          "cycle_index": 26,
+          "soh": 56.00361812045375,
+          "capacity_ah": 1.1490962375000002,
+          "duration_s": 170842.89,
+          "temp_mean": 32.13730172848342
+        },
+        {
+          "cycle_index": 27,
+          "soh": 56.16578466053934,
+          "capacity_ah": 1.1524236111111112,
+          "duration_s": 167802.53,
+          "temp_mean": 33.96176570601878
+        },
+        {
+          "cycle_index": 28,
+          "soh": 56.556764506394714,
+          "capacity_ah": 1.1604458333333334,
+          "duration_s": 169730.32,
+          "temp_mean": 34.461984058855386
+        },
+        {
+          "cycle_index": 29,
+          "soh": 56.041505935772626,
+          "capacity_ah": 1.1498736291666667,
+          "duration_s": 168275.66,
+          "temp_mean": 36.524747018051464
+        },
+        {
+          "cycle_index": 30,
+          "soh": 54.43148849872134,
+          "capacity_ah": 1.1168388888888892,
+          "duration_s": 172041.98,
+          "temp_mean": 37.13192236724431
+        },
+        {
+          "cycle_index": 31,
+          "soh": 56.671613753068065,
+          "capacity_ah": 1.1628023388888888,
+          "duration_s": 54993.64,
+          "temp_mean": 37.318529127950306
+        },
+        {
+          "cycle_index": 32,
+          "soh": 53.30552611022438,
+          "capacity_ah": 1.0937361111111112,
+          "duration_s": 162350.89999999997,
+          "temp_mean": 39.54029867021277
+        },
+        {
+          "cycle_index": 33,
+          "soh": 51.031465551670124,
+          "capacity_ah": 1.0470763680555555,
+          "duration_s": 155895.16,
+          "temp_mean": 38.16105920942527
+        },
+        {
+          "cycle_index": 34,
+          "soh": 47.10068827615524,
+          "capacity_ah": 0.9664236972222223,
+          "duration_s": 148290.78,
+          "temp_mean": 40.12335533832658
+        },
+        {
+          "cycle_index": 35,
+          "soh": 45.76318913920806,
+          "capacity_ah": 0.9389805555555557,
+          "duration_s": 139530.09999999998,
+          "temp_mean": 36.13970229347553
+        },
+        {
+          "cycle_index": 36,
+          "soh": 42.959384396275944,
+          "capacity_ah": 0.881451388888889,
+          "duration_s": 133273.86,
+          "temp_mean": 36.719240054908994
+        },
+        {
+          "cycle_index": 37,
+          "soh": 41.53131967882251,
+          "capacity_ah": 0.85215,
+          "duration_s": 123019.96999999999,
+          "temp_mean": 36.05403120048948
+        },
+        {
+          "cycle_index": 38,
+          "soh": 41.03866882734477,
+          "capacity_ah": 0.8420416666666668,
+          "duration_s": 129513.71,
+          "temp_mean": 36.811909090670405
+        }
+      ]
+    },
+    {
+      "battery_id": "RW11",
+      "profile_group": "Group_9_12",
+      "cycles_count": 38,
+      "initial_capacity_ah": 2.0554013486111113,
+      "final_soh": 46.2177239916737,
+      "slope": -1.1955123797754015,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 2.0554013486111113,
+          "duration_s": 356735.81999999995,
+          "temp_mean": 26.769716757701897
+        },
+        {
+          "cycle_index": 2,
+          "soh": 98.28257582169655,
+          "capacity_ah": 2.020101388888889,
+          "duration_s": 346358.15,
+          "temp_mean": 27.17547309318863
+        },
+        {
+          "cycle_index": 3,
+          "soh": 95.0233448290223,
+          "capacity_ah": 1.9531111111111112,
+          "duration_s": 332446.76,
+          "temp_mean": 26.81920756811248
+        },
+        {
+          "cycle_index": 4,
+          "soh": 92.6020334534948,
+          "capacity_ah": 1.9033434444444446,
+          "duration_s": 312716.46,
+          "temp_mean": 27.01642072444541
+        },
+        {
+          "cycle_index": 5,
+          "soh": 86.00178965723234,
+          "capacity_ah": 1.7676819444444447,
+          "duration_s": 303593.1,
+          "temp_mean": 26.189554943886726
+        },
+        {
+          "cycle_index": 6,
+          "soh": 82.12068768772518,
+          "capacity_ah": 1.6879097222222224,
+          "duration_s": 274707.24,
+          "temp_mean": 25.405220253873793
+        },
+        {
+          "cycle_index": 7,
+          "soh": 76.29527688398457,
+          "capacity_ah": 1.5681741500000004,
+          "duration_s": 250846.48,
+          "temp_mean": 25.90041701417819
+        },
+        {
+          "cycle_index": 8,
+          "soh": 73.403817535444,
+          "capacity_ah": 1.5087430555555557,
+          "duration_s": 263604.12,
+          "temp_mean": 25.71997311290214
+        },
+        {
+          "cycle_index": 9,
+          "soh": 70.4124444752011,
+          "capacity_ah": 1.4472583333333333,
+          "duration_s": 255009.96,
+          "temp_mean": 25.31647699241236
+        },
+        {
+          "cycle_index": 10,
+          "soh": 69.04551936146565,
+          "capacity_ah": 1.419162536111111,
+          "duration_s": 234722.59,
+          "temp_mean": 25.08304289712966
+        },
+        {
+          "cycle_index": 11,
+          "soh": 66.71912686347062,
+          "capacity_ah": 1.3713458333333335,
+          "duration_s": 227485.57,
+          "temp_mean": 24.920771321545914
+        },
+        {
+          "cycle_index": 12,
+          "soh": 65.43197381528428,
+          "capacity_ah": 1.3448896722222226,
+          "duration_s": 223425.63999999998,
+          "temp_mean": 24.972012629140007
+        },
+        {
+          "cycle_index": 13,
+          "soh": 70.99289342565146,
+          "capacity_ah": 1.459188888888889,
+          "duration_s": 20829.789999999997,
+          "temp_mean": 24.52558543219217
+        },
+        {
+          "cycle_index": 14,
+          "soh": 64.93811487429484,
+          "capacity_ah": 1.334738888888889,
+          "duration_s": 224850.01,
+          "temp_mean": 25.259860318648784
+        },
+        {
+          "cycle_index": 15,
+          "soh": 63.485438327521656,
+          "capacity_ah": 1.3048805555555554,
+          "duration_s": 209263.22000000003,
+          "temp_mean": 25.211425797351083
+        },
+        {
+          "cycle_index": 16,
+          "soh": 61.97424387724557,
+          "capacity_ah": 1.2738194444444446,
+          "duration_s": 201675.45,
+          "temp_mean": 24.914235722051348
+        },
+        {
+          "cycle_index": 17,
+          "soh": 61.99890788969196,
+          "capacity_ah": 1.2743263888888892,
+          "duration_s": 201372.82,
+          "temp_mean": 24.793203599651036
+        },
+        {
+          "cycle_index": 18,
+          "soh": 62.48191709781989,
+          "capacity_ah": 1.2842541666666665,
+          "duration_s": 191187.47,
+          "temp_mean": 24.398263298375348
+        },
+        {
+          "cycle_index": 19,
+          "soh": 62.50215239964781,
+          "capacity_ah": 1.2846700833333333,
+          "duration_s": 201709.28999999998,
+          "temp_mean": 24.598080721634943
+        },
+        {
+          "cycle_index": 20,
+          "soh": 62.528407071965404,
+          "capacity_ah": 1.2852097222222223,
+          "duration_s": 198903.22,
+          "temp_mean": 24.193843152903327
+        },
+        {
+          "cycle_index": 21,
+          "soh": 62.57847096287333,
+          "capacity_ah": 1.2862387361111112,
+          "duration_s": 189629.43,
+          "temp_mean": 24.025722252401696
+        },
+        {
+          "cycle_index": 22,
+          "soh": 62.59395252969962,
+          "capacity_ah": 1.286556944444445,
+          "duration_s": 184860.87,
+          "temp_mean": 23.88538657458827
+        },
+        {
+          "cycle_index": 23,
+          "soh": 61.8498229216143,
+          "capacity_ah": 1.2712620944444446,
+          "duration_s": 187159.71000000002,
+          "temp_mean": 23.637052478573864
+        },
+        {
+          "cycle_index": 24,
+          "soh": 62.049654939958316,
+          "capacity_ah": 1.2753694444444443,
+          "duration_s": 182757.8,
+          "temp_mean": 23.802775063817013
+        },
+        {
+          "cycle_index": 25,
+          "soh": 61.33575685658651,
+          "capacity_ah": 1.2606959736111112,
+          "duration_s": 181784.65999999997,
+          "temp_mean": 23.62843300553308
+        },
+        {
+          "cycle_index": 26,
+          "soh": 61.036808686372716,
+          "capacity_ah": 1.2545513888888888,
+          "duration_s": 163614.86,
+          "temp_mean": 23.663109394431732
+        },
+        {
+          "cycle_index": 27,
+          "soh": 61.41974281934155,
+          "capacity_ah": 1.2624222222222223,
+          "duration_s": 180167.89,
+          "temp_mean": 25.474517558944704
+        },
+        {
+          "cycle_index": 28,
+          "soh": 60.02625990243966,
+          "capacity_ah": 1.2337805555555557,
+          "duration_s": 185172.63,
+          "temp_mean": 26.032661489942686
+        },
+        {
+          "cycle_index": 29,
+          "soh": 60.15613451044498,
+          "capacity_ah": 1.2364500000000003,
+          "duration_s": 177579.58000000002,
+          "temp_mean": 27.631662286665343
+        },
+        {
+          "cycle_index": 30,
+          "soh": 57.236456017888656,
+          "capacity_ah": 1.176438888888889,
+          "duration_s": 169670.03999999998,
+          "temp_mean": 27.47267159550795
+        },
+        {
+          "cycle_index": 31,
+          "soh": 59.88969560338726,
+          "capacity_ah": 1.2309736111111111,
+          "duration_s": 16078.919999999998,
+          "temp_mean": 28.35904694807575
+        },
+        {
+          "cycle_index": 32,
+          "soh": 55.20515498185978,
+          "capacity_ah": 1.1346875,
+          "duration_s": 170818.47999999998,
+          "temp_mean": 30.405487772762942
+        },
+        {
+          "cycle_index": 33,
+          "soh": 53.5703403792716,
+          "capacity_ah": 1.1010854986111112,
+          "duration_s": 160786.18,
+          "temp_mean": 29.606410858981448
+        },
+        {
+          "cycle_index": 34,
+          "soh": 49.25352572277533,
+          "capacity_ah": 1.0123576319444447,
+          "duration_s": 154768.91,
+          "temp_mean": 30.06148400660873
+        },
+        {
+          "cycle_index": 35,
+          "soh": 48.05143115023593,
+          "capacity_ah": 0.987649763888889,
+          "duration_s": 153540.52999999997,
+          "temp_mean": 26.86687234221804
+        },
+        {
+          "cycle_index": 36,
+          "soh": 33.71408327091316,
+          "capacity_ah": 0.6929597222222221,
+          "duration_s": 145831.3,
+          "temp_mean": 27.2374815904352
+        },
+        {
+          "cycle_index": 37,
+          "soh": 39.487745260046275,
+          "capacity_ah": 0.8116316486111113,
+          "duration_s": 133872.55,
+          "temp_mean": 26.637820705915704
+        },
+        {
+          "cycle_index": 38,
+          "soh": 46.2177239916737,
+          "capacity_ah": 0.9499597222222224,
+          "duration_s": 139567.47999999998,
+          "temp_mean": 27.199897539795476
+        }
+      ]
+    },
+    {
+      "battery_id": "RW12",
+      "profile_group": "Group_9_12",
+      "cycles_count": 37,
+      "initial_capacity_ah": 2.071659876388889,
+      "final_soh": 52.62463769231274,
+      "slope": -1.2090782333449062,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 2.071659876388889,
+          "duration_s": 290833.2,
+          "temp_mean": 27.509211147377354
+        },
+        {
+          "cycle_index": 2,
+          "soh": 99.02356189742164,
+          "capacity_ah": 2.0514314000000002,
+          "duration_s": 264220.18,
+          "temp_mean": 27.255905209680975
+        },
+        {
+          "cycle_index": 3,
+          "soh": 97.76485563983591,
+          "capacity_ah": 2.0253552875000005,
+          "duration_s": 248007.82,
+          "temp_mean": 26.775473762943125
+        },
+        {
+          "cycle_index": 4,
+          "soh": 96.9589412257064,
+          "capacity_ah": 2.0086594819444445,
+          "duration_s": 253919.62,
+          "temp_mean": 27.024291306447232
+        },
+        {
+          "cycle_index": 5,
+          "soh": 95.1844116094049,
+          "capacity_ah": 1.971897263888889,
+          "duration_s": 231411.04,
+          "temp_mean": 27.323035390063986
+        },
+        {
+          "cycle_index": 6,
+          "soh": 92.63451950265879,
+          "capacity_ah": 1.9190721722222224,
+          "duration_s": 264857.64,
+          "temp_mean": 26.7808924694584
+        },
+        {
+          "cycle_index": 7,
+          "soh": 90.48226224710386,
+          "capacity_ah": 1.8744847222222223,
+          "duration_s": 285289.57,
+          "temp_mean": 26.089284294773552
+        },
+        {
+          "cycle_index": 8,
+          "soh": 88.6766113837175,
+          "capacity_ah": 1.8370777777777776,
+          "duration_s": 274728.77,
+          "temp_mean": 26.342753348984132
+        },
+        {
+          "cycle_index": 9,
+          "soh": 86.64985494176777,
+          "capacity_ah": 1.795090277777778,
+          "duration_s": 253159.06,
+          "temp_mean": 26.094642232270367
+        },
+        {
+          "cycle_index": 10,
+          "soh": 85.34742374869583,
+          "capacity_ah": 1.7681083333333334,
+          "duration_s": 238753.05,
+          "temp_mean": 26.067908010673747
+        },
+        {
+          "cycle_index": 11,
+          "soh": 84.21474371539423,
+          "capacity_ah": 1.7446430555555557,
+          "duration_s": 250187.58000000002,
+          "temp_mean": 25.753546628460505
+        },
+        {
+          "cycle_index": 12,
+          "soh": 83.13904965594915,
+          "capacity_ah": 1.7223583333333332,
+          "duration_s": 235146.13,
+          "temp_mean": 25.756740234043445
+        },
+        {
+          "cycle_index": 13,
+          "soh": 82.03647162530825,
+          "capacity_ah": 1.6995166666666668,
+          "duration_s": 243033.09,
+          "temp_mean": 25.52583942519841
+        },
+        {
+          "cycle_index": 14,
+          "soh": 84.22439780978874,
+          "capacity_ah": 1.7448430555555556,
+          "duration_s": 26420.73,
+          "temp_mean": 26.292965442265473
+        },
+        {
+          "cycle_index": 15,
+          "soh": 82.7989057413852,
+          "capacity_ah": 1.7153117083333334,
+          "duration_s": 191844.69,
+          "temp_mean": 24.993396038330484
+        },
+        {
+          "cycle_index": 16,
+          "soh": 81.46685618896481,
+          "capacity_ah": 1.6877161722222223,
+          "duration_s": 205034.45,
+          "temp_mean": 25.789402606180843
+        },
+        {
+          "cycle_index": 17,
+          "soh": 80.35585469279538,
+          "capacity_ah": 1.6647,
+          "duration_s": 220710.93,
+          "temp_mean": 25.27275977589626
+        },
+        {
+          "cycle_index": 18,
+          "soh": 78.76185644054449,
+          "capacity_ah": 1.631677777777778,
+          "duration_s": 234984.89,
+          "temp_mean": 25.407492933976727
+        },
+        {
+          "cycle_index": 19,
+          "soh": 77.72544918189934,
+          "capacity_ah": 1.6102069444444445,
+          "duration_s": 205195.21000000002,
+          "temp_mean": 24.82945065068444
+        },
+        {
+          "cycle_index": 20,
+          "soh": 76.42207939631683,
+          "capacity_ah": 1.5832055555555558,
+          "duration_s": 206366.40999999997,
+          "temp_mean": 25.074499040089457
+        },
+        {
+          "cycle_index": 21,
+          "soh": 75.44927988169034,
+          "capacity_ah": 1.5630524583333332,
+          "duration_s": 200699.78999999998,
+          "temp_mean": 24.397896846405228
+        },
+        {
+          "cycle_index": 22,
+          "soh": 74.26405408753047,
+          "capacity_ah": 1.5384986111111112,
+          "duration_s": 185948.06999999998,
+          "temp_mean": 24.35523068860049
+        },
+        {
+          "cycle_index": 23,
+          "soh": 72.74550620325813,
+          "capacity_ah": 1.5070394638888889,
+          "duration_s": 197178.8,
+          "temp_mean": 23.9105444991413
+        },
+        {
+          "cycle_index": 24,
+          "soh": 71.26166271002212,
+          "capacity_ah": 1.4762992736111114,
+          "duration_s": 189809.0,
+          "temp_mean": 24.13553193537722
+        },
+        {
+          "cycle_index": 25,
+          "soh": 70.69948085932013,
+          "capacity_ah": 1.4646527777777778,
+          "duration_s": 181779.94,
+          "temp_mean": 23.73955287322425
+        },
+        {
+          "cycle_index": 26,
+          "soh": 69.61515503385155,
+          "capacity_ah": 1.4421892347222223,
+          "duration_s": 172619.69,
+          "temp_mean": 23.218567832736056
+        },
+        {
+          "cycle_index": 27,
+          "soh": 68.6176295062957,
+          "capacity_ah": 1.4215238986111112,
+          "duration_s": 180628.13999999998,
+          "temp_mean": 23.395221568285905
+        },
+        {
+          "cycle_index": 28,
+          "soh": 67.76795328340278,
+          "capacity_ah": 1.403921497222222,
+          "duration_s": 176217.88999999998,
+          "temp_mean": 25.07039927887208
+        },
+        {
+          "cycle_index": 29,
+          "soh": 67.40698112947891,
+          "capacity_ah": 1.3964433819444444,
+          "duration_s": 166007.61,
+          "temp_mean": 25.928308586044317
+        },
+        {
+          "cycle_index": 30,
+          "soh": 65.66185372807917,
+          "capacity_ah": 1.360290277777778,
+          "duration_s": 171604.96,
+          "temp_mean": 27.643908871638388
+        },
+        {
+          "cycle_index": 31,
+          "soh": 66.77603008045796,
+          "capacity_ah": 1.3833722222222227,
+          "duration_s": 157606.96,
+          "temp_mean": 28.02702924938235
+        },
+        {
+          "cycle_index": 32,
+          "soh": 61.59198251756671,
+          "capacity_ah": 1.2759763888888886,
+          "duration_s": 172122.28999999998,
+          "temp_mean": 31.0576209234306
+        },
+        {
+          "cycle_index": 33,
+          "soh": 60.806246501568204,
+          "capacity_ah": 1.259698611111111,
+          "duration_s": 177602.31,
+          "temp_mean": 30.07683866966733
+        },
+        {
+          "cycle_index": 34,
+          "soh": 56.88039909377258,
+          "capacity_ah": 1.1783684055555559,
+          "duration_s": 167726.03,
+          "temp_mean": 29.49035501018211
+        },
+        {
+          "cycle_index": 35,
+          "soh": 55.48851654824176,
+          "capacity_ah": 1.1495333333333335,
+          "duration_s": 155504.66,
+          "temp_mean": 27.38020226405137
+        },
+        {
+          "cycle_index": 36,
+          "soh": 53.72045618081944,
+          "capacity_ah": 1.1129051361111113,
+          "duration_s": 153921.06999999998,
+          "temp_mean": 27.387438999263647
+        },
+        {
+          "cycle_index": 37,
+          "soh": 52.62463769231274,
+          "capacity_ah": 1.0902035041666667,
+          "duration_s": 147939.19,
+          "temp_mean": 27.128134079019414
+        }
+      ]
+    },
+    {
+      "battery_id": "RW2",
+      "profile_group": "Group_1_4",
+      "cycles_count": 24,
+      "initial_capacity_ah": 1.9157211861111112,
+      "final_soh": 58.61956886741174,
+      "slope": -1.5374865663545132,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 1.9157211861111112,
+          "duration_s": 388558.11,
+          "temp_mean": -2848.1728567088153
+        },
+        {
+          "cycle_index": 2,
+          "soh": 95.85184837853356,
+          "capacity_ah": 1.836254166666667,
+          "duration_s": 400934.9799999999,
+          "temp_mean": -3368.053629256229
+        },
+        {
+          "cycle_index": 3,
+          "soh": 91.75453734368013,
+          "capacity_ah": 1.7577611111111113,
+          "duration_s": 391608.19999999995,
+          "temp_mean": -3252.183971733838
+        },
+        {
+          "cycle_index": 4,
+          "soh": 89.00020763430886,
+          "capacity_ah": 1.7049958333333335,
+          "duration_s": 371089.57999999996,
+          "temp_mean": -3717.960540412564
+        },
+        {
+          "cycle_index": 5,
+          "soh": 86.63723039713328,
+          "capacity_ah": 1.659727777777778,
+          "duration_s": 351206.3999999999,
+          "temp_mean": -3428.8215762570117
+        },
+        {
+          "cycle_index": 6,
+          "soh": 85.30217631544787,
+          "capacity_ah": 1.6341518638888892,
+          "duration_s": 380919.6099999999,
+          "temp_mean": -3571.74626398515
+        },
+        {
+          "cycle_index": 7,
+          "soh": 83.51192058397815,
+          "capacity_ah": 1.5998555555555556,
+          "duration_s": 366180.76999999996,
+          "temp_mean": -3258.3514777096493
+        },
+        {
+          "cycle_index": 8,
+          "soh": 82.54066683245183,
+          "capacity_ah": 1.581249041666667,
+          "duration_s": 331875.86,
+          "temp_mean": -3384.480715394372
+        },
+        {
+          "cycle_index": 9,
+          "soh": 81.56157116907758,
+          "capacity_ah": 1.5624922986111112,
+          "duration_s": 337727.24,
+          "temp_mean": -3682.1430640636463
+        },
+        {
+          "cycle_index": 10,
+          "soh": 79.58947841962048,
+          "capacity_ah": 1.5247125000000001,
+          "duration_s": 349588.62,
+          "temp_mean": -3281.8276695224195
+        },
+        {
+          "cycle_index": 11,
+          "soh": 77.80142246894205,
+          "capacity_ah": 1.4904583333333332,
+          "duration_s": 349779.3399999999,
+          "temp_mean": -3404.538070144074
+        },
+        {
+          "cycle_index": 12,
+          "soh": 79.53959874180077,
+          "capacity_ah": 1.5237569444444443,
+          "duration_s": 296931.36,
+          "temp_mean": -3515.0894956700104
+        },
+        {
+          "cycle_index": 13,
+          "soh": 75.83146222071079,
+          "capacity_ah": 1.4527193875000002,
+          "duration_s": 489456.98999999993,
+          "temp_mean": -3704.4661803687327
+        },
+        {
+          "cycle_index": 14,
+          "soh": 74.58505324395333,
+          "capacity_ah": 1.4288416666666666,
+          "duration_s": 487190.38999999996,
+          "temp_mean": -3593.626101020853
+        },
+        {
+          "cycle_index": 15,
+          "soh": 72.95872765363428,
+          "capacity_ah": 1.397685802777778,
+          "duration_s": 498171.52,
+          "temp_mean": -3659.745341449464
+        },
+        {
+          "cycle_index": 16,
+          "soh": 70.06129996355433,
+          "capacity_ah": 1.3421791666666667,
+          "duration_s": 519275.69999999995,
+          "temp_mean": -3797.5289859352033
+        },
+        {
+          "cycle_index": 17,
+          "soh": 67.30762274996852,
+          "capacity_ah": 1.2894263888888888,
+          "duration_s": 487229.1,
+          "temp_mean": -3818.240925979529
+        },
+        {
+          "cycle_index": 18,
+          "soh": 67.99528080828198,
+          "capacity_ah": 1.3026000000000002,
+          "duration_s": 448181.93999999994,
+          "temp_mean": -3786.558664141699
+        },
+        {
+          "cycle_index": 19,
+          "soh": 67.57732717040722,
+          "capacity_ah": 1.2945931736111114,
+          "duration_s": 475498.68999999994,
+          "temp_mean": -4024.496986822536
+        },
+        {
+          "cycle_index": 20,
+          "soh": 68.56295214160768,
+          "capacity_ah": 1.3134750000000002,
+          "duration_s": 488906.1099999999,
+          "temp_mean": -4007.109708072968
+        },
+        {
+          "cycle_index": 21,
+          "soh": 65.8312422861314,
+          "capacity_ah": 1.2611430555555558,
+          "duration_s": 470412.79999999993,
+          "temp_mean": -3899.451760707128
+        },
+        {
+          "cycle_index": 22,
+          "soh": 64.83438655747209,
+          "capacity_ah": 1.242046079166667,
+          "duration_s": 480224.89,
+          "temp_mean": -3798.6742202615023
+        },
+        {
+          "cycle_index": 23,
+          "soh": 60.481211842780525,
+          "capacity_ah": 1.158651388888889,
+          "duration_s": 447964.77,
+          "temp_mean": -3981.6284246607042
+        },
+        {
+          "cycle_index": 24,
+          "soh": 58.61956886741174,
+          "capacity_ah": 1.1229875,
+          "duration_s": 468220.0,
+          "temp_mean": -4093.138478299127
+        }
+      ]
+    },
+    {
+      "battery_id": "RW3",
+      "profile_group": "Group_1_4",
+      "cycles_count": 21,
+      "initial_capacity_ah": 1.9433902777777778,
+      "final_soh": 54.527170944819375,
+      "slope": -2.051576558523282,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 1.9433902777777778,
+          "duration_s": 536588.7499999999,
+          "temp_mean": 26.906358456533855
+        },
+        {
+          "cycle_index": 2,
+          "soh": 95.87554967300129,
+          "capacity_ah": 1.8632361111111113,
+          "duration_s": 521915.28999999986,
+          "temp_mean": 27.243288743712892
+        },
+        {
+          "cycle_index": 3,
+          "soh": 92.68489130893107,
+          "capacity_ah": 1.8012291666666669,
+          "duration_s": 531080.1899999998,
+          "temp_mean": 27.582431219869317
+        },
+        {
+          "cycle_index": 4,
+          "soh": 90.25210753544245,
+          "capacity_ah": 1.7539506833333336,
+          "duration_s": 528204.7199999999,
+          "temp_mean": 26.804301943940057
+        },
+        {
+          "cycle_index": 5,
+          "soh": 87.68071475893002,
+          "capacity_ah": 1.7039784861111114,
+          "duration_s": 483585.1199999998,
+          "temp_mean": -2524.7126505493393
+        },
+        {
+          "cycle_index": 6,
+          "soh": 86.13891388259779,
+          "capacity_ah": 1.674015277777778,
+          "duration_s": 467571.04999999993,
+          "temp_mean": -4094.0981400000014
+        },
+        {
+          "cycle_index": 7,
+          "soh": 84.36352279557275,
+          "capacity_ah": 1.6395125000000002,
+          "duration_s": 470450.3099999999,
+          "temp_mean": -4094.098140000002
+        },
+        {
+          "cycle_index": 8,
+          "soh": 81.73537539280224,
+          "capacity_ah": 1.5884373388888888,
+          "duration_s": 482689.57999999984,
+          "temp_mean": -4094.098140000001
+        },
+        {
+          "cycle_index": 9,
+          "soh": 83.81887037329525,
+          "capacity_ah": 1.628927777777778,
+          "duration_s": 259421.49999999997,
+          "temp_mean": -4094.0981400000014
+        },
+        {
+          "cycle_index": 10,
+          "soh": 80.0554603531486,
+          "capacity_ah": 1.5557900333333334,
+          "duration_s": 662261.1299999999,
+          "temp_mean": -4094.098140000001
+        },
+        {
+          "cycle_index": 11,
+          "soh": 78.27493619755283,
+          "capacity_ah": 1.5211875000000004,
+          "duration_s": 651164.8199999998,
+          "temp_mean": -4094.0981400000014
+        },
+        {
+          "cycle_index": 12,
+          "soh": 76.44480114576402,
+          "capacity_ah": 1.4856208333333334,
+          "duration_s": 635618.4999999998,
+          "temp_mean": -4094.0981400000014
+        },
+        {
+          "cycle_index": 13,
+          "soh": 74.22431160893656,
+          "capacity_ah": 1.4424680555555558,
+          "duration_s": 652571.7699999998,
+          "temp_mean": -4094.0981400000014
+        },
+        {
+          "cycle_index": 14,
+          "soh": 70.68253431681892,
+          "capacity_ah": 1.3736375000000003,
+          "duration_s": 633439.8899999999,
+          "temp_mean": -4094.098140000001
+        },
+        {
+          "cycle_index": 15,
+          "soh": 68.32196883882048,
+          "capacity_ah": 1.3277625,
+          "duration_s": 636188.4199999999,
+          "temp_mean": -4094.0981400000014
+        },
+        {
+          "cycle_index": 16,
+          "soh": 68.67966276002491,
+          "capacity_ah": 1.3347138888888892,
+          "duration_s": 564210.7899999998,
+          "temp_mean": -4094.098140000001
+        },
+        {
+          "cycle_index": 17,
+          "soh": 66.5011245382318,
+          "capacity_ah": 1.292376388888889,
+          "duration_s": 588566.4799999999,
+          "temp_mean": -4094.098140000001
+        },
+        {
+          "cycle_index": 18,
+          "soh": 63.46983829090199,
+          "capacity_ah": 1.2334666666666667,
+          "duration_s": 465035.0799999999,
+          "temp_mean": -4094.0981400000005
+        },
+        {
+          "cycle_index": 19,
+          "soh": 61.89127105337823,
+          "capacity_ah": 1.2027889444444446,
+          "duration_s": 572129.0399999999,
+          "temp_mean": -4094.098140000001
+        },
+        {
+          "cycle_index": 20,
+          "soh": 56.24638300335683,
+          "capacity_ah": 1.0930867388888892,
+          "duration_s": 569152.8999999999,
+          "temp_mean": -4094.0981400000005
+        },
+        {
+          "cycle_index": 21,
+          "soh": 54.527170944819375,
+          "capacity_ah": 1.059675738888889,
+          "duration_s": 501599.04,
+          "temp_mean": -4094.098140000002
+        }
+      ]
+    },
+    {
+      "battery_id": "RW4",
+      "profile_group": "Group_1_4",
+      "cycles_count": 18,
+      "initial_capacity_ah": 1.8816353666666665,
+      "final_soh": 60.47795625274736,
+      "slope": -2.1601542139945242,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 1.8816353666666665,
+          "duration_s": 539611.1499999998,
+          "temp_mean": 27.392452297619663
+        },
+        {
+          "cycle_index": 2,
+          "soh": 96.10737073790003,
+          "capacity_ah": 1.8083902777777778,
+          "duration_s": 527186.9999999999,
+          "temp_mean": 27.023128882372173
+        },
+        {
+          "cycle_index": 3,
+          "soh": 93.10287360965432,
+          "capacity_ah": 1.7518565972222222,
+          "duration_s": 535620.1499999999,
+          "temp_mean": 27.55714971515217
+        },
+        {
+          "cycle_index": 4,
+          "soh": 90.59834789221148,
+          "capacity_ah": 1.7047305555555556,
+          "duration_s": 548029.94,
+          "temp_mean": 27.043235730531794
+        },
+        {
+          "cycle_index": 5,
+          "soh": 88.39473875393605,
+          "capacity_ah": 1.6632666666666667,
+          "duration_s": 551254.6299999999,
+          "temp_mean": 25.984734686198966
+        },
+        {
+          "cycle_index": 6,
+          "soh": 86.44334816009312,
+          "capacity_ah": 1.6265486111111114,
+          "duration_s": 562570.5899999999,
+          "temp_mean": 26.50976196738784
+        },
+        {
+          "cycle_index": 7,
+          "soh": 84.42611494458696,
+          "capacity_ah": 1.5885916375000002,
+          "duration_s": 552247.7,
+          "temp_mean": 25.801035177318308
+        },
+        {
+          "cycle_index": 8,
+          "soh": 86.06048085252178,
+          "capacity_ah": 1.6193444444444443,
+          "duration_s": 504022.8999999999,
+          "temp_mean": 25.5626354723991
+        },
+        {
+          "cycle_index": 9,
+          "soh": 81.89099704422013,
+          "capacity_ah": 1.5408899625000003,
+          "duration_s": 765691.95,
+          "temp_mean": 25.05614790259444
+        },
+        {
+          "cycle_index": 10,
+          "soh": 80.4812213793955,
+          "capacity_ah": 1.5143631250000003,
+          "duration_s": 726964.5099999998,
+          "temp_mean": 24.719442560262678
+        },
+        {
+          "cycle_index": 11,
+          "soh": 78.05612723123951,
+          "capacity_ah": 1.4687316958333334,
+          "duration_s": 764135.2899999998,
+          "temp_mean": 25.01847301382263
+        },
+        {
+          "cycle_index": 12,
+          "soh": 74.49614618035896,
+          "capacity_ah": 1.4017458333333332,
+          "duration_s": 813256.7,
+          "temp_mean": 24.24738930534107
+        },
+        {
+          "cycle_index": 13,
+          "soh": 71.67915217107571,
+          "capacity_ah": 1.3487402777777782,
+          "duration_s": 719712.3699999999,
+          "temp_mean": 22.52467257676179
+        },
+        {
+          "cycle_index": 14,
+          "soh": 70.23890530260547,
+          "capacity_ah": 1.3216400833333333,
+          "duration_s": 703999.69,
+          "temp_mean": 22.714152449868738
+        },
+        {
+          "cycle_index": 15,
+          "soh": 67.89077715275607,
+          "capacity_ah": 1.2774568736111112,
+          "duration_s": 695019.9199999999,
+          "temp_mean": 25.90986925044388
+        },
+        {
+          "cycle_index": 16,
+          "soh": 65.90665439353663,
+          "capacity_ah": 1.2401229180555555,
+          "duration_s": 306774.1699999999,
+          "temp_mean": 26.71876042046088
+        },
+        {
+          "cycle_index": 17,
+          "soh": 64.36363684596986,
+          "capacity_ah": 1.2110889541666667,
+          "duration_s": 677453.7399999999,
+          "temp_mean": 28.069337683363745
+        },
+        {
+          "cycle_index": 18,
+          "soh": 60.47795625274736,
+          "capacity_ah": 1.137974613888889,
+          "duration_s": 621002.3499999999,
+          "temp_mean": 26.806041319070257
+        }
+      ]
+    },
+    {
+      "battery_id": "RW5",
+      "profile_group": "Group_5_8",
+      "cycles_count": 20,
+      "initial_capacity_ah": 1.8901208333333335,
+      "final_soh": 59.91570203844992,
+      "slope": -2.0273260896941205,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 1.8901208333333335,
+          "duration_s": 523392.17999999993,
+          "temp_mean": 26.52952703605518
+        },
+        {
+          "cycle_index": 2,
+          "soh": 96.45121159949356,
+          "capacity_ah": 1.8230444444444445,
+          "duration_s": 529187.3199999998,
+          "temp_mean": 26.44769540718793
+        },
+        {
+          "cycle_index": 3,
+          "soh": 93.83460933935001,
+          "capacity_ah": 1.7735875000000003,
+          "duration_s": 528689.5499999999,
+          "temp_mean": 26.34431084286245
+        },
+        {
+          "cycle_index": 4,
+          "soh": 91.21624352352546,
+          "capacity_ah": 1.7240972222222222,
+          "duration_s": 520338.5699999999,
+          "temp_mean": 26.543923295928696
+        },
+        {
+          "cycle_index": 5,
+          "soh": 88.63679482572765,
+          "capacity_ah": 1.6753425250000002,
+          "duration_s": 519896.29999999993,
+          "temp_mean": 26.13687074850835
+        },
+        {
+          "cycle_index": 6,
+          "soh": 87.46751199768974,
+          "capacity_ah": 1.653241666666667,
+          "duration_s": 540356.45,
+          "temp_mean": 26.579534013824016
+        },
+        {
+          "cycle_index": 7,
+          "soh": 84.77338676907047,
+          "capacity_ah": 1.6023194444444446,
+          "duration_s": 531611.6099999999,
+          "temp_mean": 25.942279968284815
+        },
+        {
+          "cycle_index": 8,
+          "soh": 83.25169775300962,
+          "capacity_ah": 1.5735576833333333,
+          "duration_s": 522114.38999999984,
+          "temp_mean": 25.672618069877227
+        },
+        {
+          "cycle_index": 9,
+          "soh": 85.88295721834362,
+          "capacity_ah": 1.6232916666666668,
+          "duration_s": 53020.03999999999,
+          "temp_mean": 25.591838790281766
+        },
+        {
+          "cycle_index": 10,
+          "soh": 81.77423988913114,
+          "capacity_ah": 1.5456319444444446,
+          "duration_s": 734345.9799999999,
+          "temp_mean": 25.819994401662143
+        },
+        {
+          "cycle_index": 11,
+          "soh": 79.57236713996092,
+          "capacity_ah": 1.504013888888889,
+          "duration_s": 723648.3399999999,
+          "temp_mean": 25.55097772201122
+        },
+        {
+          "cycle_index": 12,
+          "soh": 77.18443926644902,
+          "capacity_ah": 1.458879166666667,
+          "duration_s": 733708.0899999999,
+          "temp_mean": 25.839530202602234
+        },
+        {
+          "cycle_index": 13,
+          "soh": 73.85058421456007,
+          "capacity_ah": 1.395865277777778,
+          "duration_s": 740715.7499999999,
+          "temp_mean": 24.836077595775663
+        },
+        {
+          "cycle_index": 14,
+          "soh": 71.41364418941468,
+          "capacity_ah": 1.3498041666666667,
+          "duration_s": 683137.9199999999,
+          "temp_mean": 23.390713078481102
+        },
+        {
+          "cycle_index": 15,
+          "soh": 69.69143881894676,
+          "capacity_ah": 1.3172524041666667,
+          "duration_s": 683827.1399999999,
+          "temp_mean": 22.764454391338884
+        },
+        {
+          "cycle_index": 16,
+          "soh": 69.85135430054075,
+          "capacity_ah": 1.320275,
+          "duration_s": 701331.2799999998,
+          "temp_mean": 25.831877957803204
+        },
+        {
+          "cycle_index": 17,
+          "soh": 66.30844441897086,
+          "capacity_ah": 1.2533097222222223,
+          "duration_s": 516255.99999999994,
+          "temp_mean": 27.64252605534772
+        },
+        {
+          "cycle_index": 18,
+          "soh": 64.31393642528734,
+          "capacity_ah": 1.2156111111111114,
+          "duration_s": 608297.75,
+          "temp_mean": 28.109430557817905
+        },
+        {
+          "cycle_index": 19,
+          "soh": 59.23445517519089,
+          "capacity_ah": 1.119602777777778,
+          "duration_s": 641401.1699999998,
+          "temp_mean": 27.775035686123076
+        },
+        {
+          "cycle_index": 20,
+          "soh": 59.91570203844992,
+          "capacity_ah": 1.1324791666666667,
+          "duration_s": 46959.369999999995,
+          "temp_mean": 26.179176159770464
+        }
+      ]
+    },
+    {
+      "battery_id": "RW6",
+      "profile_group": "Group_5_8",
+      "cycles_count": 10,
+      "initial_capacity_ah": 1.855041666666667,
+      "final_soh": 70.30599791858522,
+      "slope": -3.110754955952015,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 1.855041666666667,
+          "duration_s": 709472.7299999997,
+          "temp_mean": 27.816770033374226
+        },
+        {
+          "cycle_index": 2,
+          "soh": 96.57165532370492,
+          "capacity_ah": 1.7914444444444446,
+          "duration_s": 701457.4999999999,
+          "temp_mean": 27.839478012118644
+        },
+        {
+          "cycle_index": 3,
+          "soh": 94.76763774398597,
+          "capacity_ah": 1.7579791666666669,
+          "duration_s": 719684.2299999999,
+          "temp_mean": 27.469259270659265
+        },
+        {
+          "cycle_index": 4,
+          "soh": 91.1571184384897,
+          "capacity_ah": 1.691002529166667,
+          "duration_s": 715419.9599999998,
+          "temp_mean": 26.443840917739443
+        },
+        {
+          "cycle_index": 5,
+          "soh": 88.50294647469732,
+          "capacity_ah": 1.6417665333333336,
+          "duration_s": 733791.3399999999,
+          "temp_mean": 25.499625897464938
+        },
+        {
+          "cycle_index": 6,
+          "soh": 85.0830138586285,
+          "capacity_ah": 1.5783253583333334,
+          "duration_s": 721792.3099999999,
+          "temp_mean": 25.226767794547264
+        },
+        {
+          "cycle_index": 7,
+          "soh": 82.99648854847524,
+          "capacity_ah": 1.5396194444444444,
+          "duration_s": 723936.19,
+          "temp_mean": 28.210832817859213
+        },
+        {
+          "cycle_index": 8,
+          "soh": 80.77506495062254,
+          "capacity_ah": 1.4984111111111111,
+          "duration_s": 463370.6499999999,
+          "temp_mean": 29.609519878483805
+        },
+        {
+          "cycle_index": 9,
+          "soh": 75.40538921707358,
+          "capacity_ah": 1.398801388888889,
+          "duration_s": 716700.1299999999,
+          "temp_mean": 30.76529073309636
+        },
+        {
+          "cycle_index": 10,
+          "soh": 70.30599791858522,
+          "capacity_ah": 1.3042055555555556,
+          "duration_s": 664880.0299999999,
+          "temp_mean": 28.965043642476317
+        }
+      ]
+    },
+    {
+      "battery_id": "RW7",
+      "profile_group": "Group_5_8",
+      "cycles_count": 24,
+      "initial_capacity_ah": 1.9459777777777778,
+      "final_soh": 53.44528314814603,
+      "slope": -1.8289630864381714,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 1.9459777777777778,
+          "duration_s": 428859.0,
+          "temp_mean": 30.46758873935215
+        },
+        {
+          "cycle_index": 2,
+          "soh": 96.73371855336934,
+          "capacity_ah": 1.8824166666666668,
+          "duration_s": 400872.74999999994,
+          "temp_mean": 30.850085337672592
+        },
+        {
+          "cycle_index": 3,
+          "soh": 93.87007252852037,
+          "capacity_ah": 1.826690751388889,
+          "duration_s": 371244.6399999999,
+          "temp_mean": 30.747230467513774
+        },
+        {
+          "cycle_index": 4,
+          "soh": 91.16427274492116,
+          "capacity_ah": 1.774036488888889,
+          "duration_s": 389224.64999999997,
+          "temp_mean": 31.247899503156514
+        },
+        {
+          "cycle_index": 5,
+          "soh": 88.24555493382361,
+          "capacity_ah": 1.717238888888889,
+          "duration_s": 354690.2899999999,
+          "temp_mean": 31.852550865485362
+        },
+        {
+          "cycle_index": 6,
+          "soh": 82.95736790416703,
+          "capacity_ah": 1.6143319444444448,
+          "duration_s": 330484.20999999996,
+          "temp_mean": 36.67526557178229
+        },
+        {
+          "cycle_index": 7,
+          "soh": 84.85091128138953,
+          "capacity_ah": 1.651179877777778,
+          "duration_s": 371710.70999999996,
+          "temp_mean": 37.072316098515145
+        },
+        {
+          "cycle_index": 8,
+          "soh": 83.8477043103153,
+          "capacity_ah": 1.6316576930555555,
+          "duration_s": 317289.31,
+          "temp_mean": 36.55355778431302
+        },
+        {
+          "cycle_index": 9,
+          "soh": 82.48323479199261,
+          "capacity_ah": 1.6051054194444447,
+          "duration_s": 351576.18,
+          "temp_mean": 36.017473412388725
+        },
+        {
+          "cycle_index": 10,
+          "soh": 81.04965798398977,
+          "capacity_ah": 1.5772083333333335,
+          "duration_s": 360194.80999999994,
+          "temp_mean": 35.900070936565925
+        },
+        {
+          "cycle_index": 11,
+          "soh": 79.24031349564343,
+          "capacity_ah": 1.541998891666667,
+          "duration_s": 313694.94999999995,
+          "temp_mean": 36.03843411612304
+        },
+        {
+          "cycle_index": 12,
+          "soh": 80.88459628978292,
+          "capacity_ah": 1.5739962694444447,
+          "duration_s": 220513.51,
+          "temp_mean": 36.148756047080745
+        },
+        {
+          "cycle_index": 13,
+          "soh": 77.34293814020944,
+          "capacity_ah": 1.505076388888889,
+          "duration_s": 528854.74,
+          "temp_mean": 35.927211393608054
+        },
+        {
+          "cycle_index": 14,
+          "soh": 75.40039854286334,
+          "capacity_ah": 1.4672749999999999,
+          "duration_s": 544773.8799999999,
+          "temp_mean": 34.948979699912
+        },
+        {
+          "cycle_index": 15,
+          "soh": 72.47948760406081,
+          "capacity_ah": 1.4104347222222224,
+          "duration_s": 514756.62999999995,
+          "temp_mean": 34.79368236670522
+        },
+        {
+          "cycle_index": 16,
+          "soh": 69.66706254496454,
+          "capacity_ah": 1.3557055555555555,
+          "duration_s": 480381.13999999996,
+          "temp_mean": 33.85051760924139
+        },
+        {
+          "cycle_index": 17,
+          "soh": 67.7743408055362,
+          "capacity_ah": 1.318873611111111,
+          "duration_s": 495043.78,
+          "temp_mean": 33.3106440464345
+        },
+        {
+          "cycle_index": 18,
+          "soh": 64.42112791056195,
+          "capacity_ah": 1.2536208333333332,
+          "duration_s": 493255.9799999999,
+          "temp_mean": 32.55246509612769
+        },
+        {
+          "cycle_index": 19,
+          "soh": 62.28795292854779,
+          "capacity_ah": 1.2121097222222226,
+          "duration_s": 441062.24999999994,
+          "temp_mean": 33.99920979049909
+        },
+        {
+          "cycle_index": 20,
+          "soh": 63.325825349153234,
+          "capacity_ah": 1.2323064888888888,
+          "duration_s": 494211.87,
+          "temp_mean": 36.2103805350973
+        },
+        {
+          "cycle_index": 21,
+          "soh": 66.8640586280533,
+          "capacity_ah": 1.3011597222222222,
+          "duration_s": 322400.13,
+          "temp_mean": 36.323126484646124
+        },
+        {
+          "cycle_index": 22,
+          "soh": 58.05621852482044,
+          "capacity_ah": 1.1297611111111114,
+          "duration_s": 464972.98,
+          "temp_mean": 38.71576357401214
+        },
+        {
+          "cycle_index": 23,
+          "soh": 54.69666819879182,
+          "capacity_ah": 1.0643850083333335,
+          "duration_s": 466140.45999999996,
+          "temp_mean": 35.89168704715642
+        },
+        {
+          "cycle_index": 24,
+          "soh": 53.44528314814603,
+          "capacity_ah": 1.0400333333333334,
+          "duration_s": 441527.1499999999,
+          "temp_mean": 35.57016344304066
+        }
+      ]
+    },
+    {
+      "battery_id": "RW8",
+      "profile_group": "Group_5_8",
+      "cycles_count": 23,
+      "initial_capacity_ah": 1.8958555555555556,
+      "final_soh": 57.0336904475845,
+      "slope": -1.643118775080568,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 1.8958555555555556,
+          "duration_s": 427456.95999999996,
+          "temp_mean": 29.08527923441304
+        },
+        {
+          "cycle_index": 2,
+          "soh": 96.21271838571857,
+          "capacity_ah": 1.824054166666667,
+          "duration_s": 366421.29999999993,
+          "temp_mean": 29.610035845421397
+        },
+        {
+          "cycle_index": 3,
+          "soh": 92.30580447408677,
+          "capacity_ah": 1.7499847222222227,
+          "duration_s": 391511.32999999996,
+          "temp_mean": 28.69263425018019
+        },
+        {
+          "cycle_index": 4,
+          "soh": 90.05235103471315,
+          "capacity_ah": 1.7072625000000001,
+          "duration_s": 370135.26999999996,
+          "temp_mean": 29.079274485494278
+        },
+        {
+          "cycle_index": 5,
+          "soh": 87.23033283126354,
+          "capacity_ah": 1.6537611111111115,
+          "duration_s": 365658.95999999996,
+          "temp_mean": 30.215312162654406
+        },
+        {
+          "cycle_index": 6,
+          "soh": 80.34389340491246,
+          "capacity_ah": 1.5232041666666667,
+          "duration_s": 340693.38,
+          "temp_mean": 34.89995582060423
+        },
+        {
+          "cycle_index": 7,
+          "soh": 84.37438997052048,
+          "capacity_ah": 1.5996165597222223,
+          "duration_s": 340167.17999999993,
+          "temp_mean": 35.498190847440554
+        },
+        {
+          "cycle_index": 8,
+          "soh": 82.80694145709649,
+          "capacity_ah": 1.5699000000000003,
+          "duration_s": 326874.01999999996,
+          "temp_mean": 34.56962860703587
+        },
+        {
+          "cycle_index": 9,
+          "soh": 81.13604529177681,
+          "capacity_ah": 1.5382222222222224,
+          "duration_s": 331671.06999999995,
+          "temp_mean": 34.3952424205178
+        },
+        {
+          "cycle_index": 10,
+          "soh": 80.00873249837366,
+          "capacity_ah": 1.5168500000000003,
+          "duration_s": 339777.57999999996,
+          "temp_mean": 34.475272977389054
+        },
+        {
+          "cycle_index": 11,
+          "soh": 77.80172540102095,
+          "capacity_ah": 1.4750083333333335,
+          "duration_s": 332888.37,
+          "temp_mean": 34.6891086786985
+        },
+        {
+          "cycle_index": 12,
+          "soh": 81.21728976070611,
+          "capacity_ah": 1.5397625000000001,
+          "duration_s": 244320.80999999997,
+          "temp_mean": 34.06935742864249
+        },
+        {
+          "cycle_index": 13,
+          "soh": 77.79989392065735,
+          "capacity_ah": 1.4749736111111114,
+          "duration_s": 478594.19999999995,
+          "temp_mean": 34.904101300523855
+        },
+        {
+          "cycle_index": 14,
+          "soh": 74.89882902471474,
+          "capacity_ah": 1.4199736111111112,
+          "duration_s": 505342.4199999999,
+          "temp_mean": 33.77621028366171
+        },
+        {
+          "cycle_index": 15,
+          "soh": 72.13787984902741,
+          "capacity_ah": 1.367630002777778,
+          "duration_s": 452620.63,
+          "temp_mean": 33.03853910510999
+        },
+        {
+          "cycle_index": 16,
+          "soh": 70.08291477902091,
+          "capacity_ah": 1.3286708333333335,
+          "duration_s": 495567.0899999999,
+          "temp_mean": 31.988612828450698
+        },
+        {
+          "cycle_index": 17,
+          "soh": 67.13745479906461,
+          "capacity_ah": 1.2728291666666665,
+          "duration_s": 481430.31999999995,
+          "temp_mean": 31.359656047960698
+        },
+        {
+          "cycle_index": 18,
+          "soh": 64.84239012583002,
+          "capacity_ah": 1.2293180555555556,
+          "duration_s": 466990.88,
+          "temp_mean": 31.355930273032786
+        },
+        {
+          "cycle_index": 19,
+          "soh": 64.26012588863428,
+          "capacity_ah": 1.2182791666666668,
+          "duration_s": 477559.6099999999,
+          "temp_mean": 31.904479530421987
+        },
+        {
+          "cycle_index": 20,
+          "soh": 64.2286976855949,
+          "capacity_ah": 1.2176833333333335,
+          "duration_s": 490775.0099999999,
+          "temp_mean": 34.40534180912863
+        },
+        {
+          "cycle_index": 21,
+          "soh": 68.88007173542289,
+          "capacity_ah": 1.3058666666666667,
+          "duration_s": 388148.57999999996,
+          "temp_mean": 35.207198521061414
+        },
+        {
+          "cycle_index": 22,
+          "soh": 61.743859559155354,
+          "capacity_ah": 1.1705743916666669,
+          "duration_s": 493787.4099999999,
+          "temp_mean": 37.64586780312991
+        },
+        {
+          "cycle_index": 23,
+          "soh": 57.0336904475845,
+          "capacity_ah": 1.081276388888889,
+          "duration_s": 488081.93,
+          "temp_mean": 34.773120455783236
+        }
+      ]
+    },
+    {
+      "battery_id": "RW9",
+      "profile_group": "Group_9_12",
+      "cycles_count": 39,
+      "initial_capacity_ah": 2.044566863888889,
+      "final_soh": 36.62205982228474,
+      "slope": -1.4226047067738288,
+      "cycles": [
+        {
+          "cycle_index": 1,
+          "soh": 100.0,
+          "capacity_ah": 2.044566863888889,
+          "duration_s": 335394.8,
+          "temp_mean": 29.798449049787894
+        },
+        {
+          "cycle_index": 2,
+          "soh": 96.85221362240958,
+          "capacity_ah": 1.980208266666667,
+          "duration_s": 334143.69999999995,
+          "temp_mean": 29.960153816612955
+        },
+        {
+          "cycle_index": 3,
+          "soh": 93.65852224900266,
+          "capacity_ah": 1.9149111111111112,
+          "duration_s": 306032.19000000006,
+          "temp_mean": 29.009291670275832
+        },
+        {
+          "cycle_index": 4,
+          "soh": 90.71854883537269,
+          "capacity_ah": 1.8548013888888895,
+          "duration_s": 305963.86,
+          "temp_mean": 29.62127902154935
+        },
+        {
+          "cycle_index": 5,
+          "soh": 86.44577479383024,
+          "capacity_ah": 1.7674416666666668,
+          "duration_s": 282405.01,
+          "temp_mean": 28.650222124185632
+        },
+        {
+          "cycle_index": 6,
+          "soh": 83.84205841935244,
+          "capacity_ah": 1.7142069444444445,
+          "duration_s": 279706.19,
+          "temp_mean": 35.37266556094791
+        },
+        {
+          "cycle_index": 7,
+          "soh": 80.66004786824784,
+          "capacity_ah": 1.6491486111111116,
+          "duration_s": 267585.97,
+          "temp_mean": 35.46839577765989
+        },
+        {
+          "cycle_index": 8,
+          "soh": 78.21712349612825,
+          "capacity_ah": 1.599201388888889,
+          "duration_s": 259625.37,
+          "temp_mean": 35.85727927363872
+        },
+        {
+          "cycle_index": 9,
+          "soh": 74.54648731217074,
+          "capacity_ah": 1.524152777777778,
+          "duration_s": 242463.5,
+          "temp_mean": 35.21102990682814
+        },
+        {
+          "cycle_index": 10,
+          "soh": 70.63591984290301,
+          "capacity_ah": 1.4441986111111114,
+          "duration_s": 229943.61,
+          "temp_mean": 34.25061207069994
+        },
+        {
+          "cycle_index": 11,
+          "soh": 69.30753471146431,
+          "capacity_ah": 1.4170388888888892,
+          "duration_s": 239859.57,
+          "temp_mean": 34.256989515966225
+        },
+        {
+          "cycle_index": 12,
+          "soh": 67.65573226117324,
+          "capacity_ah": 1.3832666833333331,
+          "duration_s": 217402.65000000002,
+          "temp_mean": 34.53930349439589
+        },
+        {
+          "cycle_index": 13,
+          "soh": 71.78951924469752,
+          "capacity_ah": 1.4677847222222222,
+          "duration_s": 96964.43,
+          "temp_mean": 34.191755479593695
+        },
+        {
+          "cycle_index": 14,
+          "soh": 66.1165573059823,
+          "capacity_ah": 1.3517972222222223,
+          "duration_s": 223927.96000000002,
+          "temp_mean": 35.05245699991656
+        },
+        {
+          "cycle_index": 15,
+          "soh": 65.13784675265728,
+          "capacity_ah": 1.3317868305555556,
+          "duration_s": 207883.28999999998,
+          "temp_mean": 34.222392006209006
+        },
+        {
+          "cycle_index": 16,
+          "soh": 63.38659910216163,
+          "capacity_ah": 1.2959814013888888,
+          "duration_s": 200411.27999999997,
+          "temp_mean": 34.262906717936666
+        },
+        {
+          "cycle_index": 17,
+          "soh": 59.755117570942296,
+          "capacity_ah": 1.2217333333333333,
+          "duration_s": 203585.3,
+          "temp_mean": 34.29777953388788
+        },
+        {
+          "cycle_index": 18,
+          "soh": 61.15224858594098,
+          "capacity_ah": 1.250298611111111,
+          "duration_s": 183334.86,
+          "temp_mean": 34.17857840517518
+        },
+        {
+          "cycle_index": 19,
+          "soh": 59.72013325272747,
+          "capacity_ah": 1.2210180555555556,
+          "duration_s": 195865.68,
+          "temp_mean": 34.154763485959215
+        },
+        {
+          "cycle_index": 20,
+          "soh": 58.36158688383757,
+          "capacity_ah": 1.193241666666667,
+          "duration_s": 189145.46000000002,
+          "temp_mean": 33.56253876229466
+        },
+        {
+          "cycle_index": 21,
+          "soh": 58.420279021580484,
+          "capacity_ah": 1.1944416666666666,
+          "duration_s": 179461.95,
+          "temp_mean": 33.67228336192176
+        },
+        {
+          "cycle_index": 22,
+          "soh": 56.46729392648011,
+          "capacity_ah": 1.1545115805555555,
+          "duration_s": 177736.78,
+          "temp_mean": 32.83507678741181
+        },
+        {
+          "cycle_index": 23,
+          "soh": 55.89590572219962,
+          "capacity_ah": 1.1428291666666668,
+          "duration_s": 174210.7,
+          "temp_mean": 33.140886635509816
+        },
+        {
+          "cycle_index": 24,
+          "soh": 54.768788430333,
+          "capacity_ah": 1.1197845,
+          "duration_s": 169982.9,
+          "temp_mean": 32.65342941964517
+        },
+        {
+          "cycle_index": 25,
+          "soh": 54.159664578019544,
+          "capacity_ah": 1.1073305555555557,
+          "duration_s": 162449.78999999998,
+          "temp_mean": 32.10623040717719
+        },
+        {
+          "cycle_index": 26,
+          "soh": 52.57837339470941,
+          "capacity_ah": 1.0750000000000002,
+          "duration_s": 165244.37,
+          "temp_mean": 32.73559107945034
+        },
+        {
+          "cycle_index": 27,
+          "soh": 52.98813146747024,
+          "capacity_ah": 1.0833777777777778,
+          "duration_s": 166853.0,
+          "temp_mean": 33.21551128325821
+        },
+        {
+          "cycle_index": 28,
+          "soh": 51.75851671251353,
+          "capacity_ah": 1.0582374819444444,
+          "duration_s": 159361.82,
+          "temp_mean": 35.257384672563774
+        },
+        {
+          "cycle_index": 29,
+          "soh": 51.72951118031627,
+          "capacity_ah": 1.0576444444444446,
+          "duration_s": 146596.43,
+          "temp_mean": 35.706577000292654
+        },
+        {
+          "cycle_index": 30,
+          "soh": 50.57122455918812,
+          "capacity_ah": 1.0339625000000001,
+          "duration_s": 161958.07,
+          "temp_mean": 37.372950426741326
+        },
+        {
+          "cycle_index": 31,
+          "soh": 48.976143440737,
+          "capacity_ah": 1.0013500000000002,
+          "duration_s": 154033.8,
+          "temp_mean": 37.22274330301149
+        },
+        {
+          "cycle_index": 32,
+          "soh": 52.53727531214636,
+          "capacity_ah": 1.0741597222222223,
+          "duration_s": 19787.14,
+          "temp_mean": 37.12581493508417
+        },
+        {
+          "cycle_index": 33,
+          "soh": 48.438539762383336,
+          "capacity_ah": 0.9903583333333335,
+          "duration_s": 155895.25,
+          "temp_mean": 40.07537599908547
+        },
+        {
+          "cycle_index": 34,
+          "soh": 45.85048236873849,
+          "capacity_ah": 0.9374437694444445,
+          "duration_s": 152063.4,
+          "temp_mean": 38.68207078652694
+        },
+        {
+          "cycle_index": 35,
+          "soh": 43.325389547224546,
+          "capacity_ah": 0.8858165583333334,
+          "duration_s": 143954.75,
+          "temp_mean": 40.72046963856156
+        },
+        {
+          "cycle_index": 36,
+          "soh": 40.31040744569764,
+          "capacity_ah": 0.8241732333333335,
+          "duration_s": 133498.72,
+          "temp_mean": 36.570227821205854
+        },
+        {
+          "cycle_index": 37,
+          "soh": 38.06905198207894,
+          "capacity_ah": 0.7783472222222223,
+          "duration_s": 121523.5,
+          "temp_mean": 36.962707853289494
+        },
+        {
+          "cycle_index": 38,
+          "soh": 37.15996572438936,
+          "capacity_ah": 0.7597603458333335,
+          "duration_s": 119619.70999999999,
+          "temp_mean": 36.3800358526739
+        },
+        {
+          "cycle_index": 39,
+          "soh": 36.62205982228474,
+          "capacity_ah": 0.7487625,
+          "duration_s": 110841.22,
+          "temp_mean": 37.198573984658616
+        }
+      ]
+    }
+  ],
+  "mean_trajectory": [
+    {
+      "cycle_index": 1,
+      "mean_soh": 100.0,
+      "min_soh": 100.0,
+      "max_soh": 100.0,
+      "battery_count": 12
+    },
+    {
+      "cycle_index": 2,
+      "mean_soh": 96.83107452240829,
+      "min_soh": 95.85184837853356,
+      "max_soh": 99.02356189742164,
+      "battery_count": 12
+    },
+    {
+      "cycle_index": 3,
+      "mean_soh": 93.95557158406139,
+      "min_soh": 91.75453734368013,
+      "max_soh": 97.76485563983591,
+      "battery_count": 12
+    },
+    {
+      "cycle_index": 4,
+      "mean_soh": 91.49722010528511,
+      "min_soh": 89.00020763430886,
+      "max_soh": 96.9589412257064,
+      "battery_count": 12
+    },
+    {
+      "cycle_index": 5,
+      "mean_soh": 88.32971926293988,
+      "min_soh": 85.67758783846901,
+      "max_soh": 95.1844116094049,
+      "battery_count": 12
+    },
+    {
+      "cycle_index": 6,
+      "mean_soh": 85.39392868956234,
+      "min_soh": 80.34389340491246,
+      "max_soh": 92.63451950265879,
+      "battery_count": 12
+    },
+    {
+      "cycle_index": 7,
+      "mean_soh": 83.74925904466097,
+      "min_soh": 76.29527688398457,
+      "max_soh": 90.48226224710386,
+      "battery_count": 12
+    },
+    {
+      "cycle_index": 8,
+      "mean_soh": 82.10524769418232,
+      "min_soh": 73.403817535444,
+      "max_soh": 88.6766113837175,
+      "battery_count": 12
+    },
+    {
+      "cycle_index": 9,
+      "mean_soh": 80.19376238714806,
+      "min_soh": 70.4124444752011,
+      "max_soh": 86.64985494176777,
+      "battery_count": 12
+    },
+    {
+      "cycle_index": 10,
+      "mean_soh": 77.73540522922569,
+      "min_soh": 69.04551936146565,
+      "max_soh": 85.34742374869583,
+      "battery_count": 12
+    },
+    {
+      "cycle_index": 11,
+      "mean_soh": 76.59637575542617,
+      "min_soh": 66.71912686347062,
+      "max_soh": 84.21474371539423,
+      "battery_count": 11
+    },
+    {
+      "cycle_index": 12,
+      "mean_soh": 76.1112739173378,
+      "min_soh": 65.43197381528428,
+      "max_soh": 83.13904965594915,
+      "battery_count": 11
+    },
+    {
+      "cycle_index": 13,
+      "mean_soh": 75.36274518418955,
+      "min_soh": 70.99289342565146,
+      "max_soh": 82.03647162530825,
+      "battery_count": 11
+    },
+    {
+      "cycle_index": 14,
+      "mean_soh": 72.5988598929888,
+      "min_soh": 64.93811487429484,
+      "max_soh": 84.22439780978874,
+      "battery_count": 11
+    },
+    {
+      "cycle_index": 15,
+      "mean_soh": 70.73915698110548,
+      "min_soh": 63.485438327521656,
+      "max_soh": 82.7989057413852,
+      "battery_count": 11
+    },
+    {
+      "cycle_index": 16,
+      "mean_soh": 69.0682118356201,
+      "min_soh": 61.97424387724557,
+      "max_soh": 81.46685618896481,
+      "battery_count": 11
+    },
+    {
+      "cycle_index": 17,
+      "mean_soh": 67.17840333586385,
+      "min_soh": 59.755117570942296,
+      "max_soh": 80.35585469279538,
+      "battery_count": 11
+    },
+    {
+      "cycle_index": 18,
+      "mean_soh": 65.53081944645281,
+      "min_soh": 60.47795625274736,
+      "max_soh": 78.76185644054449,
+      "battery_count": 11
+    },
+    {
+      "cycle_index": 19,
+      "mean_soh": 64.66429361803289,
+      "min_soh": 59.23445517519089,
+      "max_soh": 77.72544918189934,
+      "battery_count": 10
+    },
+    {
+      "cycle_index": 20,
+      "mean_soh": 63.93272739956183,
+      "min_soh": 56.24638300335683,
+      "max_soh": 76.42207939631683,
+      "battery_count": 10
+    },
+    {
+      "cycle_index": 21,
+      "mean_soh": 65.10647173078117,
+      "min_soh": 54.527170944819375,
+      "max_soh": 75.44927988169034,
+      "battery_count": 9
+    },
+    {
+      "cycle_index": 22,
+      "mean_soh": 62.762408661889566,
+      "min_soh": 56.46729392648011,
+      "max_soh": 74.26405408753047,
+      "battery_count": 8
+    },
+    {
+      "cycle_index": 23,
+      "mean_soh": 60.14996690176149,
+      "min_soh": 54.69666819879182,
+      "max_soh": 72.74550620325813,
+      "battery_count": 8
+    },
+    {
+      "cycle_index": 24,
+      "mean_soh": 59.715746350521265,
+      "min_soh": 53.44528314814603,
+      "max_soh": 71.26166271002212,
+      "battery_count": 6
+    },
+    {
+      "cycle_index": 25,
+      "mean_soh": 60.742695169654056,
+      "min_soh": 54.159664578019544,
+      "max_soh": 70.69948085932013,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 26,
+      "mean_soh": 59.80848880884686,
+      "min_soh": 52.57837339470941,
+      "max_soh": 69.61515503385155,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 27,
+      "mean_soh": 59.7978221134117,
+      "min_soh": 52.98813146747024,
+      "max_soh": 68.6176295062957,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 28,
+      "mean_soh": 59.027373601187676,
+      "min_soh": 51.75851671251353,
+      "max_soh": 67.76795328340278,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 29,
+      "mean_soh": 58.8335331890032,
+      "min_soh": 51.72951118031627,
+      "max_soh": 67.40698112947891,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 30,
+      "mean_soh": 56.97525570096932,
+      "min_soh": 50.57122455918812,
+      "max_soh": 65.66185372807917,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 31,
+      "mean_soh": 58.07837071941257,
+      "min_soh": 48.976143440737,
+      "max_soh": 66.77603008045796,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 32,
+      "mean_soh": 55.65998473044931,
+      "min_soh": 52.53727531214636,
+      "max_soh": 61.59198251756671,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 33,
+      "mean_soh": 53.46164804872331,
+      "min_soh": 48.438539762383336,
+      "max_soh": 60.806246501568204,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 34,
+      "mean_soh": 49.771273865360406,
+      "min_soh": 45.85048236873849,
+      "max_soh": 56.88039909377258,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 35,
+      "mean_soh": 48.15713159622757,
+      "min_soh": 43.325389547224546,
+      "max_soh": 55.48851654824176,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 36,
+      "mean_soh": 42.67608282342655,
+      "min_soh": 33.71408327091316,
+      "max_soh": 53.72045618081944,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 37,
+      "mean_soh": 42.92818865331512,
+      "min_soh": 38.06905198207894,
+      "max_soh": 52.62463769231274,
+      "battery_count": 4
+    },
+    {
+      "cycle_index": 38,
+      "mean_soh": 41.47211951446928,
+      "min_soh": 37.15996572438936,
+      "max_soh": 46.2177239916737,
+      "battery_count": 3
+    },
+    {
+      "cycle_index": 39,
+      "mean_soh": 36.62205982228474,
+      "min_soh": 36.62205982228474,
+      "max_soh": 36.62205982228474,
+      "battery_count": 1
+    }
+  ],
+  "actual_vs_predicted": [
+    {
+      "battery_id": "RW5",
+      "cycle_index": 16,
+      "actual_soh": 69.85135430054075,
+      "predicted_soh": 67.43259937418115,
+      "error": -2.418754926359597,
+      "abs_error": 2.418754926359597
+    },
+    {
+      "battery_id": "RW10",
+      "cycle_index": 34,
+      "actual_soh": 47.10068827615524,
+      "predicted_soh": 47.843329084904425,
+      "error": 0.7426408087491865,
+      "abs_error": 0.7426408087491865
+    },
+    {
+      "battery_id": "RW3",
+      "cycle_index": 12,
+      "actual_soh": 76.44480114576402,
+      "predicted_soh": 78.7046636448978,
+      "error": 2.2598624991337886,
+      "abs_error": 2.2598624991337886
+    },
+    {
+      "battery_id": "RW12",
+      "cycle_index": 3,
+      "actual_soh": 97.76485563983591,
+      "predicted_soh": 95.80226016355678,
+      "error": -1.9625954762791338,
+      "abs_error": 1.9625954762791338
+    },
+    {
+      "battery_id": "RW12",
+      "cycle_index": 18,
+      "actual_soh": 78.76185644054449,
+      "predicted_soh": 68.2143776802952,
+      "error": -10.547478760249291,
+      "abs_error": 10.547478760249291
+    },
+    {
+      "battery_id": "RW1",
+      "cycle_index": 9,
+      "actual_soh": 83.95755276186043,
+      "predicted_soh": 84.0942521939313,
+      "error": 0.13669943207086988,
+      "abs_error": 0.13669943207086988
+    },
+    {
+      "battery_id": "RW10",
+      "cycle_index": 26,
+      "actual_soh": 56.00361812045375,
+      "predicted_soh": 54.70940545414056,
+      "error": -1.294212666313193,
+      "abs_error": 1.294212666313193
+    },
+    {
+      "battery_id": "RW10",
+      "cycle_index": 10,
+      "actual_soh": 71.89988045872441,
+      "predicted_soh": 69.26966551047913,
+      "error": -2.630214948245282,
+      "abs_error": 2.630214948245282
+    },
+    {
+      "battery_id": "RW11",
+      "cycle_index": 26,
+      "actual_soh": 61.036808686372716,
+      "predicted_soh": 58.91592840044171,
+      "error": -2.1208802859310083,
+      "abs_error": 2.1208802859310083
+    },
+    {
+      "battery_id": "RW12",
+      "cycle_index": 7,
+      "actual_soh": 90.48226224710386,
+      "predicted_soh": 84.94392566604952,
+      "error": -5.538336581054338,
+      "abs_error": 5.538336581054338
+    },
+    {
+      "battery_id": "RW3",
+      "cycle_index": 16,
+      "actual_soh": 68.67966276002491,
+      "predicted_soh": 66.69182349297193,
+      "error": -1.9878392670529763,
+      "abs_error": 1.9878392670529763
+    },
+    {
+      "battery_id": "RW5",
+      "cycle_index": 3,
+      "actual_soh": 93.83460933935001,
+      "predicted_soh": 93.41223296333233,
+      "error": -0.42237637601768085,
+      "abs_error": 0.42237637601768085
+    },
+    {
+      "battery_id": "RW3",
+      "cycle_index": 6,
+      "actual_soh": 86.13891388259779,
+      "predicted_soh": 85.27980199820858,
+      "error": -0.8591118843892076,
+      "abs_error": 0.8591118843892076
+    },
+    {
+      "battery_id": "RW11",
+      "cycle_index": 23,
+      "actual_soh": 61.8498229216143,
+      "predicted_soh": 62.98519751612294,
+      "error": 1.1353745945086402,
+      "abs_error": 1.1353745945086402
+    },
+    {
+      "battery_id": "RW9",
+      "cycle_index": 33,
+      "actual_soh": 48.438539762383336,
+      "predicted_soh": 52.08083177238407,
+      "error": 3.6422920100007374,
+      "abs_error": 3.6422920100007374
+    },
+    {
+      "battery_id": "RW5",
+      "cycle_index": 8,
+      "actual_soh": 83.25169775300962,
+      "predicted_soh": 85.06015093275158,
+      "error": 1.80845317974196,
+      "abs_error": 1.80845317974196
+    },
+    {
+      "battery_id": "RW6",
+      "cycle_index": 3,
+      "actual_soh": 94.76763774398597,
+      "predicted_soh": 92.91148446021732,
+      "error": -1.8561532837686485,
+      "abs_error": 1.8561532837686485
+    },
+    {
+      "battery_id": "RW7",
+      "cycle_index": 12,
+      "actual_soh": 80.88459628978292,
+      "predicted_soh": 80.30004324963447,
+      "error": -0.5845530401484496,
+      "abs_error": 0.5845530401484496
+    },
+    {
+      "battery_id": "RW2",
+      "cycle_index": 11,
+      "actual_soh": 77.80142246894205,
+      "predicted_soh": 79.80704059068148,
+      "error": 2.005618121739431,
+      "abs_error": 2.005618121739431
+    },
+    {
+      "battery_id": "RW11",
+      "cycle_index": 5,
+      "actual_soh": 86.00178965723234,
+      "predicted_soh": 88.58389334737669,
+      "error": 2.5821036901443506,
+      "abs_error": 2.5821036901443506
+    },
+    {
+      "battery_id": "RW10",
+      "cycle_index": 6,
+      "actual_soh": 83.2398580125823,
+      "predicted_soh": 81.4247074248099,
+      "error": -1.8151505877724077,
+      "abs_error": 1.8151505877724077
+    },
+    {
+      "battery_id": "RW1",
+      "cycle_index": 19,
+      "actual_soh": 69.14004980834325,
+      "predicted_soh": 65.57662126815792,
+      "error": -3.5634285401853276,
+      "abs_error": 3.5634285401853276
+    },
+    {
+      "battery_id": "RW1",
+      "cycle_index": 7,
+      "actual_soh": 87.52652990678992,
+      "predicted_soh": 86.34092625359862,
+      "error": -1.1856036531912935,
+      "abs_error": 1.1856036531912935
+    },
+    {
+      "battery_id": "RW3",
+      "cycle_index": 13,
+      "actual_soh": 74.22431160893656,
+      "predicted_soh": 78.23791512772316,
+      "error": 4.013603518786596,
+      "abs_error": 4.013603518786596
+    },
+    {
+      "battery_id": "RW8",
+      "cycle_index": 4,
+      "actual_soh": 90.05235103471315,
+      "predicted_soh": 91.42763292356827,
+      "error": 1.3752818888551133,
+      "abs_error": 1.3752818888551133
+    },
+    {
+      "battery_id": "RW7",
+      "cycle_index": 7,
+      "actual_soh": 84.85091128138953,
+      "predicted_soh": 84.30282564929325,
+      "error": -0.5480856320962744,
+      "abs_error": 0.5480856320962744
+    },
+    {
+      "battery_id": "RW9",
+      "cycle_index": 7,
+      "actual_soh": 80.66004786824784,
+      "predicted_soh": 79.255751645736,
+      "error": -1.4042962225118458,
+      "abs_error": 1.4042962225118458
+    },
+    {
+      "battery_id": "RW8",
+      "cycle_index": 8,
+      "actual_soh": 82.80694145709649,
+      "predicted_soh": 83.62917246315011,
+      "error": 0.8222310060536273,
+      "abs_error": 0.8222310060536273
+    },
+    {
+      "battery_id": "RW12",
+      "cycle_index": 1,
+      "actual_soh": 100.0,
+      "predicted_soh": 99.84747802162207,
+      "error": -0.15252197837793346,
+      "abs_error": 0.15252197837793346
+    },
+    {
+      "battery_id": "RW9",
+      "cycle_index": 36,
+      "actual_soh": 40.31040744569764,
+      "predicted_soh": 41.80107017542492,
+      "error": 1.4906627297272763,
+      "abs_error": 1.4906627297272763
+    },
+    {
+      "battery_id": "RW8",
+      "cycle_index": 16,
+      "actual_soh": 70.08291477902091,
+      "predicted_soh": 68.57491835735662,
+      "error": -1.5079964216642878,
+      "abs_error": 1.5079964216642878
+    },
+    {
+      "battery_id": "RW3",
+      "cycle_index": 1,
+      "actual_soh": 100.0,
+      "predicted_soh": 99.330497532361,
+      "error": -0.6695024676390062,
+      "abs_error": 0.6695024676390062
+    },
+    {
+      "battery_id": "RW11",
+      "cycle_index": 20,
+      "actual_soh": 62.528407071965404,
+      "predicted_soh": 62.04110521790129,
+      "error": -0.4873018540641141,
+      "abs_error": 0.4873018540641141
+    },
+    {
+      "battery_id": "RW7",
+      "cycle_index": 8,
+      "actual_soh": 83.8477043103153,
+      "predicted_soh": 82.50061459733037,
+      "error": -1.3470897129849249,
+      "abs_error": 1.3470897129849249
+    },
+    {
+      "battery_id": "RW7",
+      "cycle_index": 13,
+      "actual_soh": 77.34293814020944,
+      "predicted_soh": 79.20148728063147,
+      "error": 1.8585491404220278,
+      "abs_error": 1.8585491404220278
+    },
+    {
+      "battery_id": "RW8",
+      "cycle_index": 6,
+      "actual_soh": 80.34389340491246,
+      "predicted_soh": 86.52942673565511,
+      "error": 6.185533330742643,
+      "abs_error": 6.185533330742643
+    },
+    {
+      "battery_id": "RW9",
+      "cycle_index": 1,
+      "actual_soh": 100.0,
+      "predicted_soh": 99.62203966259281,
+      "error": -0.37796033740718826,
+      "abs_error": 0.37796033740718826
+    },
+    {
+      "battery_id": "RW10",
+      "cycle_index": 4,
+      "actual_soh": 90.98011661704959,
+      "predicted_soh": 91.33276096366569,
+      "error": 0.35264434661610267,
+      "abs_error": 0.35264434661610267
+    },
+    {
+      "battery_id": "RW8",
+      "cycle_index": 19,
+      "actual_soh": 64.26012588863428,
+      "predicted_soh": 64.93247772621517,
+      "error": 0.6723518375808908,
+      "abs_error": 0.6723518375808908
+    },
+    {
+      "battery_id": "RW12",
+      "cycle_index": 36,
+      "actual_soh": 53.72045618081944,
+      "predicted_soh": 54.393843376390365,
+      "error": 0.6733871955709247,
+      "abs_error": 0.6733871955709247
+    },
+    {
+      "battery_id": "RW6",
+      "cycle_index": 9,
+      "actual_soh": 75.40538921707358,
+      "predicted_soh": 73.03768451132117,
+      "error": -2.367704705752402,
+      "abs_error": 2.367704705752402
+    },
+    {
+      "battery_id": "RW12",
+      "cycle_index": 29,
+      "actual_soh": 67.40698112947891,
+      "predicted_soh": 62.17945357403102,
+      "error": -5.227527555447885,
+      "abs_error": 5.227527555447885
+    },
+    {
+      "battery_id": "RW12",
+      "cycle_index": 9,
+      "actual_soh": 86.64985494176777,
+      "predicted_soh": 86.89903418465872,
+      "error": 0.24917924289094628,
+      "abs_error": 0.24917924289094628
+    },
+    {
+      "battery_id": "RW12",
+      "cycle_index": 2,
+      "actual_soh": 99.02356189742164,
+      "predicted_soh": 97.12877409946863,
+      "error": -1.8947877979530148,
+      "abs_error": 1.8947877979530148
+    },
+    {
+      "battery_id": "RW11",
+      "cycle_index": 9,
+      "actual_soh": 70.4124444752011,
+      "predicted_soh": 75.79402280040837,
+      "error": 5.381578325207272,
+      "abs_error": 5.381578325207272
+    },
+    {
+      "battery_id": "RW11",
+      "cycle_index": 8,
+      "actual_soh": 73.403817535444,
+      "predicted_soh": 78.2423422545439,
+      "error": 4.838524719099894,
+      "abs_error": 4.838524719099894
+    },
+    {
+      "battery_id": "RW10",
+      "cycle_index": 18,
+      "actual_soh": 62.39513062219678,
+      "predicted_soh": 62.60996714493817,
+      "error": 0.2148365227413862,
+      "abs_error": 0.2148365227413862
+    },
+    {
+      "battery_id": "RW4",
+      "cycle_index": 8,
+      "actual_soh": 86.06048085252178,
+      "predicted_soh": 84.13097563172481,
+      "error": -1.929505220796969,
+      "abs_error": 1.929505220796969
+    },
+    {
+      "battery_id": "RW4",
+      "cycle_index": 11,
+      "actual_soh": 78.05612723123951,
+      "predicted_soh": 78.73539648691091,
+      "error": 0.6792692556714002,
+      "abs_error": 0.6792692556714002
+    },
+    {
+      "battery_id": "RW9",
+      "cycle_index": 28,
+      "actual_soh": 51.75851671251353,
+      "predicted_soh": 52.76937810802456,
+      "error": 1.0108613955110286,
+      "abs_error": 1.0108613955110286
+    },
+    {
+      "battery_id": "RW10",
+      "cycle_index": 25,
+      "actual_soh": 56.77587838469005,
+      "predicted_soh": 57.618748809249354,
+      "error": 0.8428704245593011,
+      "abs_error": 0.8428704245593011
+    },
+    {
+      "battery_id": "RW11",
+      "cycle_index": 36,
+      "actual_soh": 33.71408327091316,
+      "predicted_soh": 47.22295569403567,
+      "error": 13.508872423122511,
+      "abs_error": 13.508872423122511
+    },
+    {
+      "battery_id": "RW5",
+      "cycle_index": 14,
+      "actual_soh": 71.41364418941468,
+      "predicted_soh": 70.9127924203435,
+      "error": -0.5008517690711898,
+      "abs_error": 0.5008517690711898
+    },
+    {
+      "battery_id": "RW12",
+      "cycle_index": 33,
+      "actual_soh": 60.806246501568204,
+      "predicted_soh": 64.05146165708067,
+      "error": 3.2452151555124615,
+      "abs_error": 3.2452151555124615
+    },
+    {
+      "battery_id": "RW12",
+      "cycle_index": 15,
+      "actual_soh": 82.7989057413852,
+      "predicted_soh": 79.94725601329088,
+      "error": -2.8516497280943156,
+      "abs_error": 2.8516497280943156
+    },
+    {
+      "battery_id": "RW9",
+      "cycle_index": 4,
+      "actual_soh": 90.71854883537269,
+      "predicted_soh": 91.61833118265004,
+      "error": 0.8997823472773518,
+      "abs_error": 0.8997823472773518
+    },
+    {
+      "battery_id": "RW8",
+      "cycle_index": 13,
+      "actual_soh": 77.79989392065735,
+      "predicted_soh": 79.54464155927985,
+      "error": 1.7447476386224992,
+      "abs_error": 1.7447476386224992
+    },
+    {
+      "battery_id": "RW10",
+      "cycle_index": 8,
+      "actual_soh": 77.91085713666833,
+      "predicted_soh": 75.86933533001469,
+      "error": -2.041521806653634,
+      "abs_error": 2.041521806653634
+    },
+    {
+      "battery_id": "RW8",
+      "cycle_index": 1,
+      "actual_soh": 100.0,
+      "predicted_soh": 99.42834717447789,
+      "error": -0.5716528255221078,
+      "abs_error": 0.5716528255221078
+    },
+    {
+      "battery_id": "RW4",
+      "cycle_index": 12,
+      "actual_soh": 74.49614618035896,
+      "predicted_soh": 73.85229537500007,
+      "error": -0.6438508053588947,
+      "abs_error": 0.6438508053588947
+    },
+    {
+      "battery_id": "RW7",
+      "cycle_index": 2,
+      "actual_soh": 96.73371855336934,
+      "predicted_soh": 96.90898823150842,
+      "error": 0.1752696781390739,
+      "abs_error": 0.1752696781390739
+    },
+    {
+      "battery_id": "RW4",
+      "cycle_index": 1,
+      "actual_soh": 100.0,
+      "predicted_soh": 99.82839908432523,
+      "error": -0.1716009156747731,
+      "abs_error": 0.1716009156747731
+    },
+    {
+      "battery_id": "RW8",
+      "cycle_index": 5,
+      "actual_soh": 87.23033283126354,
+      "predicted_soh": 89.34708311461014,
+      "error": 2.1167502833466045,
+      "abs_error": 2.1167502833466045
+    }
+  ]
+}
