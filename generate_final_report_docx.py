@@ -5,7 +5,7 @@ import docx
 from docx import Document
 from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ALIGN_VERTICAL
 from docx.oxml import parse_xml, OxmlElement
 from docx.oxml.ns import nsdecls, qn
 
@@ -30,9 +30,7 @@ if os.path.exists(src_img_path):
     # Figure 3: Bottom-right
     fig3 = src_img.crop((int(w * 0.505), int(h * 0.525), w - 30, h - 20))
     fig3.save('public/figures/figure3_bayesian_optimization.png')
-    print("Cropped Figures 1, 2, 3 from uploaded user file!")
-else:
-    print("Warning: media file not found, keeping existing figures.")
+    print("Successfully cropped Figures 1, 2, 3!")
 
 # -------------------------------------------------------------
 # 2. GENERATE FIGURES 8.1, 8.2, 8.3, 8.4 FROM IPYNB DATA
@@ -134,31 +132,25 @@ plt.tight_layout()
 plt.savefig('public/figures/figure8_4_shap_explanation.png', dpi=300)
 plt.close()
 
-print("Figures 8.1-8.4 generated with exact ipynb parameters!")
-
 # -------------------------------------------------------------
-# 3. BUILD DOCX WITH EXACT 2026_MOVIE_INTELLIGENCE STYLE
+# 3. BUILD DOCX
 # -------------------------------------------------------------
 doc = Document()
 
-# Standard margins
 for section in doc.sections:
     section.top_margin = Inches(1)
     section.bottom_margin = Inches(1)
     section.left_margin = Inches(1)
     section.right_margin = Inches(1)
 
-# Default style
 style = doc.styles['Normal']
 font = style.font
 font.name = 'Times New Roman'
 font.size = Pt(12)
 font.color.rgb = RGBColor(0, 0, 0)
 
-# Colors
-MAROON_COLOR = RGBColor(192, 0, 0) # Symbiosis Maroon / Red as on 2026_Movie_Intelligence
+MAROON_COLOR = RGBColor(192, 0, 0)
 DARK_TITLE = RGBColor(15, 23, 42)
-SUB_COLOR = RGBColor(51, 65, 85)
 
 def add_heading_1(text):
     p = doc.add_paragraph()
@@ -188,7 +180,7 @@ def add_body(text):
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(6)
     p.paragraph_format.line_spacing = 1.15
-    p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY  # 4th option: JUSTIFIED ALIGNMENT
+    p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     run = p.add_run(text)
     run.font.size = Pt(11.5)
     return p
@@ -197,7 +189,7 @@ def add_bullet(text):
     p = doc.add_paragraph(style='List Bullet')
     p.paragraph_format.space_after = Pt(3)
     p.paragraph_format.line_spacing = 1.15
-    p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY  # 4th option: JUSTIFIED ALIGNMENT
+    p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     run = p.add_run(text)
     run.font.size = Pt(11)
     return p
@@ -237,7 +229,7 @@ def format_table(table):
                     run.font.size = Pt(9.5)
 
 # =============================================================
-# PAGE 1: TITLE PAGE (Matching 2026_Movie_Intelligence PDF)
+# PAGE 1: TITLE PAGE (Exact 2026_Movie_Intelligence Layout)
 # =============================================================
 p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -268,7 +260,6 @@ p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_after = Pt(6)
 run = p.add_run("Submitted by\n")
 run.font.size = Pt(11)
-run.font.italic = False
 
 p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -307,88 +298,104 @@ run.font.color.rgb = MAROON_COLOR
 doc.add_page_break()
 
 # =============================================================
-# PAGE 2: INDEX / CONTENTS / LIST OF TABLES & FIGURES
+# PAGE 2: INDEX (CONTENTS Matching 2026_Movie_Intelligence exact alignment)
 # =============================================================
 p_toc = doc.add_paragraph()
 p_toc.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p_toc.paragraph_format.space_before = Pt(12)
-p_toc.paragraph_format.space_after = Pt(18)
+p_toc.paragraph_format.space_before = Pt(16)
+p_toc.paragraph_format.space_after = Pt(20)
 run = p_toc.add_run("CONTENTS")
 run.font.bold = True
 run.font.size = Pt(16)
 
+# Create borderless 2-column table for exact flush-left and flush-right index alignment
+toc_table = doc.add_table(rows=0, cols=2)
+toc_table.alignment = WD_TABLE_ALIGNMENT.CENTER
+
+def set_cell_border(cell, **kwargs):
+    tcPr = cell._tc.get_or_add_tcPr()
+    tcBorders = parse_xml(r'<w:tcBorders {}><w:top w:val="none"/><w:left w:val="none"/><w:bottom w:val="none"/><w:right w:val="none"/></w:tcBorders>'.format(nsdecls('w')))
+    tcPr.append(tcBorders)
+
 toc_items = [
-    ("1. Title Page", "1"),
-    ("2. Abstract", "3"),
-    ("3. Keywords", "3"),
-    ("4. Introduction", "4"),
-    ("    4.1 Background", "4"),
-    ("    4.2 Battery State of Health", "4"),
-    ("    4.3 Randomized Battery Usage", "5"),
-    ("    4.4 Motivation", "5"),
-    ("    4.5 Problem Statement", "5"),
-    ("    4.6 Objectives of the Project", "6"),
-    ("    4.7 Research Question", "6"),
-    ("    4.8 Research Hypothesis", "6"),
-    ("    4.9 Scope of the Project", "7"),
-    ("    4.10 Novelty and Contribution of the Project", "7"),
-    ("    4.11 Organization of the Report", "7"),
-    ("    4.12 Expected Research Outcome", "8"),
-    ("5. Literature Review / Related Work", "9"),
-    ("    5.1 Traditional Approaches to Battery SoH Estimation", "9"),
-    ("    5.2 Machine Learning-Based SoH Estimation", "9"),
-    ("    5.3 Feature Engineering for SoH Estimation", "9"),
-    ("    5.4 Deep Learning for Battery SoH Estimation", "10"),
-    ("    5.5 Explainable Artificial Intelligence", "10"),
-    ("    5.6 Recent Explainable ML Research", "10"),
-    ("    5.7 Randomized Battery Usage in Existing Research", "10"),
-    ("    5.8 Comparison of Existing Research (Table 1)", "11"),
-    ("    5.9 Discussion of Existing Work", "11"),
-    ("    5.10 Limitations Identified in Existing Research", "12"),
-    ("    5.11 Research Gap", "12"),
-    ("    5.12 Research Gap Addressed by the Present Project", "12"),
-    ("    5.13 Positioning of the Present Work", "13"),
-    ("    5.14 Summary of Literature Review", "13"),
-    ("6. Methodology / Proposed System", "14"),
-    ("    6.1 Proposed Methodology (Figure 1)", "14"),
-    ("    6.2 Data Collection and Preparation", "14"),
-    ("    6.3 State of Health Calculation", "15"),
-    ("    6.4 Feature Engineering (Table of Features)", "15"),
-    ("    6.5 Data Cleaning and Preprocessing", "15"),
-    ("    6.6 Model Design (Figure 2 & Figure 3)", "16"),
-    ("    6.7 Training and Evaluation", "16"),
-    ("    6.8 Explainability", "17"),
-    ("    6.9 Methodology Summary", "17"),
-    ("7. Implementation", "18"),
-    ("8. Results and Discussion", "19"),
-    ("    8.1 Experimental Results (Figure 8.1, Figure 8.2, Table 8.1, Table 8.2)", "19"),
-    ("    8.2 Battery-Wise Generalization (Table 8.3)", "20"),
-    ("    8.3 Explainability Results (Table 8.4, Figure 8.3, Figure 8.4)", "21"),
-    ("    8.4 Discussion", "21"),
-    ("9. Conclusion and Future Work", "22"),
-    ("    9.1 Conclusion", "22"),
-    ("    9.2 Limitations and Future Work", "22"),
-    ("10. References", "23")
+    ("1. Title Page", "1", True),
+    ("2. Abstract", "3", True),
+    ("3. Keywords", "3", True),
+    ("4. Introduction", "4", True),
+    ("    4.1 Background", "4", False),
+    ("    4.2 Battery State of Health", "4", False),
+    ("    4.3 Randomized Battery Usage", "5", False),
+    ("    4.4 Motivation", "5", False),
+    ("    4.5 Problem Statement", "5", False),
+    ("    4.6 Objectives of the Project", "6", False),
+    ("    4.7 Research Question", "6", False),
+    ("    4.8 Research Hypothesis", "6", False),
+    ("    4.9 Scope of the Project", "7", False),
+    ("    4.10 Novelty and Contribution of the Project", "7", False),
+    ("    4.11 Organization of the Report", "7", False),
+    ("    4.12 Expected Research Outcome", "8", False),
+    ("5. Literature Review / Related Work", "9", True),
+    ("    5.1 Traditional Approaches to Battery SoH Estimation", "9", False),
+    ("    5.2 Machine Learning-Based SoH Estimation", "9", False),
+    ("    5.3 Feature Engineering for SoH Estimation", "9", False),
+    ("    5.4 Deep Learning for Battery SoH Estimation", "10", False),
+    ("    5.5 Explainable Artificial Intelligence", "10", False),
+    ("    5.6 Recent Explainable ML Research", "10", False),
+    ("    5.7 Randomized Battery Usage in Existing Research", "10", False),
+    ("    5.8 Comparison of Existing Research", "11", False),
+    ("    5.9 Discussion of Existing Work", "11", False),
+    ("    5.10 Limitations Identified in Existing Research", "12", False),
+    ("    5.11 Research Gap", "12", False),
+    ("    5.12 Research Gap Addressed by the Present Project", "12", False),
+    ("    5.13 Positioning of the Present Work", "13", False),
+    ("    5.14 Summary of Literature Review", "13", False),
+    ("6. Methodology / Proposed System", "14", True),
+    ("    6.1 Proposed Methodology", "14", False),
+    ("    6.2 Data Collection and Preparation", "14", False),
+    ("    6.3 State of Health Calculation", "15", False),
+    ("    6.4 Feature Engineering", "15", False),
+    ("    6.5 Data Cleaning and Preprocessing", "15", False),
+    ("    6.6 Model Design", "16", False),
+    ("    6.7 Training and Evaluation", "16", False),
+    ("    6.8 Explainability", "17", False),
+    ("    6.9 Methodology Summary", "17", False),
+    ("7. Implementation", "18", True),
+    ("8. Results and Discussion", "19", True),
+    ("    8.1 Experimental Results", "19", False),
+    ("    8.2 Battery-Wise Generalization", "20", False),
+    ("    8.3 Explainability Results", "21", False),
+    ("    8.4 Discussion", "21", False),
+    ("9. Conclusion and Future Work", "22", True),
+    ("    9.1 Conclusion", "22", False),
+    ("    9.2 Limitations and Future Work", "22", False),
+    ("10. References", "23", True)
 ]
 
-for title, page in toc_items:
-    p = doc.add_paragraph()
-    p.paragraph_format.space_after = Pt(2)
-    p.paragraph_format.line_spacing = 1.15
-    run1 = p.add_run(title)
+for title, page, is_major in toc_items:
+    row = toc_table.add_row()
+    c1, c2 = row.cells
+    c1.width = Inches(5.5)
+    c2.width = Inches(1.0)
+    set_cell_border(c1)
+    set_cell_border(c2)
+    
+    p1 = c1.paragraphs[0]
+    p1.paragraph_format.space_before = Pt(1)
+    p1.paragraph_format.space_after = Pt(2)
+    p1.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    run1 = p1.add_run(title)
     run1.font.size = Pt(10.5)
-    if not title.startswith("    "):
+    if is_major:
         run1.font.bold = True
     
-    # Leader dots
-    dots_count = max(5, 75 - len(title) - len(page))
-    run_dots = p.add_run(" " + "." * dots_count + " ")
-    run_dots.font.color.rgb = RGBColor(148, 163, 184)
-    run_dots.font.size = Pt(10)
-    
-    run2 = p.add_run(page)
-    run2.font.bold = True
+    p2 = c2.paragraphs[0]
+    p2.paragraph_format.space_before = Pt(1)
+    p2.paragraph_format.space_after = Pt(2)
+    p2.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    run2 = p2.add_run(page)
     run2.font.size = Pt(10.5)
+    if is_major:
+        run2.font.bold = True
 
 # List of Tables
 p_lot = doc.add_paragraph()
@@ -398,6 +405,8 @@ run = p_lot.add_run("LIST OF TABLES")
 run.font.bold = True
 run.font.size = Pt(12)
 
+lot_table = doc.add_table(rows=0, cols=2)
+lot_table.alignment = WD_TABLE_ALIGNMENT.CENTER
 tables_list = [
     ("Table 1. Comparison of Existing Approaches for Lithium-Ion Battery SoH Estimation", "11"),
     ("Table 8.1. Model Performance under Random Train-Test Split", "19"),
@@ -407,15 +416,23 @@ tables_list = [
 ]
 
 for t_title, page in tables_list:
-    p = doc.add_paragraph()
-    p.paragraph_format.space_after = Pt(2)
-    run1 = p.add_run(t_title)
+    row = lot_table.add_row()
+    c1, c2 = row.cells
+    c1.width = Inches(5.5)
+    c2.width = Inches(1.0)
+    set_cell_border(c1)
+    set_cell_border(c2)
+    
+    p1 = c1.paragraphs[0]
+    p1.paragraph_format.space_after = Pt(2)
+    p1.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    run1 = p1.add_run(t_title)
     run1.font.size = Pt(10)
-    dots_count = max(5, 72 - len(t_title) - len(page))
-    run_dots = p.add_run(" " + "." * dots_count + " ")
-    run_dots.font.color.rgb = RGBColor(148, 163, 184)
-    run_dots.font.size = Pt(9.5)
-    run2 = p.add_run(page)
+    
+    p2 = c2.paragraphs[0]
+    p2.paragraph_format.space_after = Pt(2)
+    p2.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    run2 = p2.add_run(page)
     run2.font.bold = True
     run2.font.size = Pt(10)
 
@@ -427,6 +444,8 @@ run = p_lof.add_run("LIST OF FIGURES")
 run.font.bold = True
 run.font.size = Pt(12)
 
+lof_table = doc.add_table(rows=0, cols=2)
+lof_table.alignment = WD_TABLE_ALIGNMENT.CENTER
 figures_list = [
     ("Figure 1. Overall methodology for SOH prediction using Random Forest with Bayesian Optimization", "14"),
     ("Figure 2. Random Forest regression process", "16"),
@@ -438,15 +457,23 @@ figures_list = [
 ]
 
 for f_title, page in figures_list:
-    p = doc.add_paragraph()
-    p.paragraph_format.space_after = Pt(2)
-    run1 = p.add_run(f_title)
+    row = lof_table.add_row()
+    c1, c2 = row.cells
+    c1.width = Inches(5.5)
+    c2.width = Inches(1.0)
+    set_cell_border(c1)
+    set_cell_border(c2)
+    
+    p1 = c1.paragraphs[0]
+    p1.paragraph_format.space_after = Pt(2)
+    p1.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    run1 = p1.add_run(f_title)
     run1.font.size = Pt(10)
-    dots_count = max(5, 72 - len(f_title) - len(page))
-    run_dots = p.add_run(" " + "." * dots_count + " ")
-    run_dots.font.color.rgb = RGBColor(148, 163, 184)
-    run_dots.font.size = Pt(9.5)
-    run2 = p.add_run(page)
+    
+    p2 = c2.paragraphs[0]
+    p2.paragraph_format.space_after = Pt(2)
+    p2.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    run2 = p2.add_run(page)
     run2.font.bold = True
     run2.font.size = Pt(10)
 
@@ -722,11 +749,17 @@ add_body(
 
 add_heading_2("6.6 Model Design")
 add_body(
-    "The project evaluates six regression algorithms covering linear baselines and non-linear ensembles: Linear Regression, Ridge, Elastic Net, Random Forest, Extra Trees, and Gradient Boosting."
+    "The project evaluates six regression algorithms covering linear baselines and non-linear ensembles: Linear Regression, Ridge, Elastic Net, Random Forest, Extra Trees, and Gradient Boosting. Figure 2 illustrates the Random Forest decision tree ensemble mechanism for aggregating multi-tree predictions into a robust SoH estimate."
 )
 
-# Insert Figure 2 & Figure 3 (Cropped from user file)
+# Insert Figure 2 (Cropped from user file)
 add_figure("public/figures/figure2_random_forest_process.png", "Figure 2. Random Forest regression process", width=Inches(5.8))
+
+add_body(
+    "To identify optimal hyperparameter configurations efficiently across tree depth, estimator counts, and learning rates, Bayesian Optimization with Gaussian Process surrogates is employed, as illustrated in Figure 3."
+)
+
+# Insert Figure 3 (Cropped from user file)
 add_figure("public/figures/figure3_bayesian_optimization.png", "Figure 3. Bayesian optimization process for hyperparameter tuning", width=Inches(5.8))
 
 add_heading_2("6.7 Training and Evaluation")
@@ -960,4 +993,4 @@ for r in refs:
 
 doc.save("PROJECT_REPORT_SIT_NAGPUR.docx")
 doc.save("public/PROJECT_REPORT_SIT_NAGPUR.docx")
-print("Report successfully saved to PROJECT_REPORT_SIT_NAGPUR.docx and public/PROJECT_REPORT_SIT_NAGPUR.docx!")
+print("Report successfully saved with exact matching Index alignment and separate image placements!")
